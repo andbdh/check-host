@@ -412,8 +412,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div class="menu-icon">🔐</div>
     <div><div class="menu-label">Password Generator</div><div class="menu-desc">ساخت رمز ۳۲ کاراکتری قوی</div></div>
   </div>
-  <div class="menu-item" id="nav-ipscan" data-page="ipscan">
-    <div class="menu-icon">🌍</div>
+  
     <div><div class="menu-label">IP Scanner</div><div class="menu-desc">بررسی اطلاعات IP آنلاین</div></div>
   </div>
   <div class="menu-item" id="nav-cfscan" data-page="cfscan">
@@ -457,34 +456,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <div class="stat"><div class="stat-num" id="count">0</div><div class="stat-label">ساخته شده</div></div>
       <div class="stat"><div class="stat-num">32</div><div class="stat-label">کاراکتر</div></div>
       <div class="stat"><div class="stat-num">∞</div><div class="stat-label">بدون تکرار</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="page-ipscan">
-  <div class="my-ip-box">
-    <div class="my-ip-label">آیپی شما</div>
-    <div class="my-ip" id="myIp">در حال دریافت...</div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">🌍</div>
-      <div><div class="card-title">IP Scanner</div><div class="card-subtitle">بررسی اطلاعات هر آیپی</div></div>
-    </div>
-    <div class="scan-input">
-      <input type="text" id="ipInput" placeholder="مثلاً 8.8.8.8">
-      <button class="scan-btn" id="scanIpBtn">🔍 اسکن</button>
-    </div>
-    <div class="scan-result" id="scanResult" style="display:none">
-      <div class="scan-row"><div class="scan-label">IP</div><div class="scan-value" id="res-ip">-</div></div>
-      <div class="scan-row"><div class="scan-label">شهر</div><div class="scan-value" id="res-city">-</div></div>
-      <div class="scan-row"><div class="scan-label">استان</div><div class="scan-value" id="res-region">-</div></div>
-      <div class="scan-row"><div class="scan-label">کشور</div><div class="scan-value" id="res-country">-</div></div>
-      <div class="scan-row"><div class="scan-label">موقعیت</div><div class="scan-value" id="res-loc">-</div></div>
-      <div class="scan-row"><div class="scan-label">ISP</div><div class="scan-value" id="res-org">-</div></div>
-      <div class="scan-row"><div class="scan-label">منطقه زمانی</div><div class="scan-value" id="res-timezone">-</div></div>
-      <div class="scan-row"><div class="scan-label">کد پستی</div><div class="scan-value" id="res-postal">-</div></div>
-      <div class="scan-row"><div class="scan-label">هاست‌نم</div><div class="scan-value" id="res-hostname">-</div></div>
     </div>
   </div>
 </div>
@@ -604,7 +575,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     document.querySelectorAll('.menu-item[data-page]').forEach(function(m){m.classList.remove('active')});
     var el=$('page-'+page);if(el)el.classList.add('active');
     var nav=$('nav-'+page);if(nav)nav.classList.add('active');
-    if(page==='ipscan')getMyIP();
+    if(page==='ipscan')
     closeMenu();
   }
   function showToast(msg){var t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
@@ -629,24 +600,9 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     }).catch(function(){showToast('❌ خطا در کپی')});
   }
 
-  async function getMyIP(){
-    try{var r=await fetch('/api/my-ip');var d=await r.json();$('myIp').textContent=d.ip}
-    catch(e){$('myIp').textContent='خطا'}
-  }
+  
 
-  async function scanIP(){
-    var ip=$('ipInput').value.trim();
-    if(!ip){showToast('⚠️ آیپی رو وارد کنید');return}
-    $('scanResult').style.display='none';showToast('⏳ در حال اسکن...');
-    try{
-      var r=await fetch('https://ipwho.is/'+ip);var d=await r.json();
-      if(!d.success){showToast('❌ IP پیدا نشد');return}
-      $('res-ip').textContent=d.ip||'-';$('res-city').textContent=d.city||'-';$('res-region').textContent=d.region||'-';
-      $('res-country').textContent=d.country||'-';$('res-loc').textContent=d.latitude+','+d.longitude||'-';$('res-org').textContent=d.connection.org||'-';
-      $('res-timezone').textContent=d.timezone||'-';$('res-postal').textContent=d.postal||'-';$('res-hostname').textContent=d.connection.domain||'-';
-      $('scanResult').style.display='block';showToast('✅ اسکن کامل شد!');
-    }catch(e){showToast('❌ خطا در اسکن')}
-  }
+  
 
   async function startCFScan(){
     if(scanning)return;scanning=true;
