@@ -1,51 +1,29 @@
 # 🔍 Check Host
 
-A powerful Cloudflare Worker tool with 4 features:
+ابزار همه‌کاره Cloudflare Worker
 
-- 🔑 **Password Generator** - Strong 32-char passwords, never repeated
-- 🌍 **IP Scanner** - Check IP information and network details
-- ☁️ **Cloudflare Scanner** - Scan Cloudflare IP ranges for latency
-- 🧙 **Wizard** - Auto-deploy VPN panels (EdgeTunnel, Nahan, Cfnew)
+**🔗 استفاده آنلاین:** https://chatbox.arsh-d62.workers.dev/
 
-## Features
+## ابزارها
 
-### 🔑 Password Generator
-- 32-character strong passwords
-- Uses `Math.random()` for generation
-- Copy to clipboard with one tap
-- Track password count
+| ابزار | توضیح |
+|-------|-------|
+| 🔑 **تولید رمز عبور** | رمز 32 کاراکتری قوی و یکتا |
+| 🌍 **اسکنر IP** | اطلاعات IP و موقعیت جغرافیایی |
+| ☁️ **اسکنر Cloudflare** | بررسی پینگ آیپی‌های Cloudflare |
+| 🧙 **Wizard نصب پنل** | نصب خودکار پنل‌های VPN |
 
-### 🌍 IP Scanner
-- IP geolocation
-- ISP information
-- City/Country details
-- ASN lookup
+### 🧙 پنل‌های پشتیبانی شده
 
-### ☁️ Cloudflare Scanner
-- Scans 19 Cloudflare IP ranges
-- Shows ping latency
-- Color-coded results
+| پنل | ستاره | ویژگی |
+|-----|-------|-------|
+| 🔴 **EdgeTunnel** | ⭐ 41.4k | VLESS/Trojan/SS |
+| 🟢 **Nahan Panel** | 60+ | VLESS/Reality |
+| 🟣 **Cfnew** | ⭐ 14.6k | GrainTCP (کم پینگ) |
 
-### 🧙 Wizard Panel Deployer
-- **EdgeTunnel** (41.4k ⭐) - VLESS/Trojan/SS
-- **Nahan Panel** - VLESS/Reality
-- **Cfnew** (14.6k ⭐) - GrainTCP (lowest ping)
-
-Supports both API Token and Global API Key.
-
-## Deployment
-
-1. Create a Cloudflare Worker
-2. Copy the contents of `index.js`
-3. Deploy!
-
-## Tech Stack
+## فناوری
 
 - Cloudflare Workers
 - ES Modules
 - Vanilla JavaScript
-- RTL Persian/Farsi UI
-
-## License
-
-MIT
+- رابط کاربری RTL فارسی
