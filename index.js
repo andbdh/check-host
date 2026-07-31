@@ -410,7 +410,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div><div class="menu-label">Password Generator</div><div class="menu-desc">ساخت رمز ۳۲ کاراکتری قوی</div></div>
   </div>
   
-    <div><div class="menu-label">IP Scanner</div><div class="menu-desc">بررسی اطلاعات IP آنلاین</div></div>
+    <div><div class="menu-label">Cloudflare Scanner/div><div class="menu-desc">بررسی اطلاعات IP آنلاین</div></div>
   </div>
   <div class="menu-item" id="nav-cfscan" data-page="cfscan">
     <div class="menu-icon">☁️</div>
@@ -597,7 +597,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     document.querySelectorAll('.menu-item[data-page]').forEach(function(m){m.classList.remove('active')});
     var el=$('page-'+page);if(el)el.classList.add('active');
     var nav=$('nav-'+page);if(nav)nav.classList.add('active');
-    if(page==='ipscan')getMyIP();
+    
     closeMenu();
   }
   function showToast(msg){var t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
@@ -622,24 +622,9 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     }).catch(function(){showToast('❌ خطا در کپی')});
   }
 
-  async function getMyIP(){
-    try{var r=await fetch('/api/my-ip');var d=await r.json();$('myIp').textContent=d.ip}
-    catch(e){$('myIp').textContent='خطا'}
-  }
+  
 
-  async function scanIP(){
-    var ip=$('ipInput').value.trim();
-    if(!ip){showToast('⚠️ آیپی رو وارد کنید');return}
-    $('scanResult').style.display='none';showToast('⏳ در حال اسکن...');
-    try{
-      var r=await fetch('https://ipwho.is/'+ip);var d=await r.json();
-      if(!d.success){showToast('❌ IP پیدا نشد');return}
-      $('res-ip').textContent=d.ip||'-';$('res-city').textContent=d.city||'-';$('res-region').textContent=d.region||'-';
-      $('res-country').textContent=d.country||'-';$('res-loc').textContent=d.latitude+','+d.longitude||'-';$('res-org').textContent=d.connection.org||'-';
-      $('res-timezone').textContent=d.timezone||'-';$('res-postal').textContent=d.postal||'-';$('res-hostname').textContent=d.connection.domain||'-';
-      $('scanResult').style.display='block';showToast('✅ اسکن کامل شد!');
-    }catch(e){showToast('❌ خطا در اسکن')}
-  }
+  
 
   async function startCFScan(){
     if(scanning)return;scanning=true;
