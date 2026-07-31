@@ -158,7 +158,7 @@ const UI = `<!DOCTYPE html>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#0f0f17;--card:#161622;--card2:#1e1e2e;--accent:#00d4aa;--accent2:#00f5c8;--text:#e0e0e0;--dim:#6b7280;--border:#2a2a3a;--success:#00d4aa;--danger:#ff4757;--gradient:linear-gradient(135deg,#00d4aa,#00f5c8)}
-body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:16px}
+body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:16px;overflow:auto}
 .header{text-align:center;padding:20px 0}
 .logo{font-size:24px;font-weight:800;color:var(--accent)}
 .logo span{color:var(--text)}
