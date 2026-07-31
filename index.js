@@ -45,7 +45,14 @@ export default {
           });
           const kvD = await kvR.json();
           if (kvD.success) { kvId = kvD.result.id; addLog('✅ KV created: ' + kvId); }
-          else { addLog('⚠️ KV: ' + (kvD.errors?.[0]?.message || 'Failed')); }
+          else {
+            // Try to find existing KV namespace
+            const listR = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/kv/namespaces`, { headers: authH() });
+            const listD = await listR.json();
+            const existing = listD.result?.find(ns => ns.title === workerName + '-kv');
+            if (existing) { kvId = existing.id; addLog('✅ KV found: ' + kvId); }
+            else { addLog('⚠️ KV: ' + (kvD.errors?.[0]?.message || 'Failed')); }
+          }
         }
 
         // Step 2: Create D1 database (if needed)
@@ -58,7 +65,14 @@ export default {
           });
           const d1D = await d1R.json();
           if (d1D.success) { d1Id = d1D.result.uuid; addLog('✅ D1 created: ' + d1Id); }
-          else { addLog('⚠️ D1: ' + (d1D.errors?.[0]?.message || 'Failed')); }
+          else {
+            // Try to find existing D1 database
+            const listR = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/d1/database`, { headers: authH() });
+            const listD = await listR.json();
+            const existing = listD.result?.find(db => db.name === workerName + '-db');
+            if (existing) { d1Id = existing.uuid; addLog('✅ D1 found: ' + d1Id); }
+            else { addLog('⚠️ D1: ' + (d1D.errors?.[0]?.message || 'Failed')); }
+          }
         }
 
         // Step 3: Download source
