@@ -1188,7 +1188,24 @@ body{
 
 <a class="floating" href="https://t.me/Arshia_Kennedy" target="_blank" rel="noopener">📬 تلگرام</a>
 <div class="toast" id="toast"></div>
-    navigator.clipboard.writeText(currentPassword).then(function(){
+<script>
+(function(){
+  var currentPassword='', count=0, scanning=false, selectedPanel=null, validatedToken=null, validatedAccountId=null, validatedEmail=null;
+
+  function $(id){return document.getElementById(id)}
+  function openMenu(){$('menuOverlay').classList.add('active');$('sidebar').classList.add('active')}
+  function closeMenu(){$('menuOverlay').classList.remove('active');$('sidebar').classList.remove('active')}
+  function showPage(page){
+    document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+    document.querySelectorAll('.menu-item[data-page]').forEach(function(m){m.classList.remove('active')});
+    var el=$('page-'+page);if(el)el.classList.add('active');
+    var nav=$('nav-'+page);if(nav)nav.classList.add('active');
+    if(page==='ipscan')getMyIP();
+    closeMenu();
+  }
+  function showToast(msg){var t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+
+  navigator.clipboard.writeText(currentPassword).then(function(){
       $('copyBtn').classList.add('copied');$('copyBtn').textContent='✅';$('pwdContainer').classList.add('copied');
       showToast('✅ رمز کپی شد!');
       setTimeout(function(){$('copyBtn').classList.remove('copied');$('copyBtn').textContent='📋';$('pwdContainer').classList.remove('copied')},2000);
