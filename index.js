@@ -394,24 +394,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
 .toast.show{opacity:1;transform:translateX(-50%) translateY(-10px)}
 .floating{position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#0088cc,#0066aa);color:#fff;padding:12px 18px;border-radius:50px;text-decoration:none;font-size:12px;font-weight:600;box-shadow:0 4px 20px rgba(0,136,204,.4);z-index:50;display:flex;align-items:center;gap:8px;transition:all .2s}
 .floating:hover{transform:scale(1.05)}
-
-.t-tool-textarea{width:100%;background:var(--card2);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:12px;font-size:13px;outline:none;direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;resize:vertical;min-height:120px}
-.t-tool-textarea:focus{border-color:var(--accent)}
-.t-tool-input{width:100%;background:var(--card2);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:12px;font-size:14px;outline:none;direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace}
-.t-tool-input:focus{border-color:var(--accent)}
-.t-btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.t-btn{background:var(--gradient);color:#000;border:none;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;flex:1;min-width:100px;text-align:center}
-.t-btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(0,212,170,.3)}
-.t-btn-secondary{background:var(--card2);color:var(--text);border:1px solid var(--border)}
-.t-btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.t-result{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);direction:ltr;text-align:left;white-space:pre-wrap;max-height:400px;overflow-y:auto;word-break:break-all}
-.dns-rec{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.dns-type{background:rgba(0,212,170,.1);color:var(--accent);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;min-width:50px;text-align:center}
-.dns-data{flex:1;font-size:12px;color:var(--text);direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;word-break:break-all}
-.dns-ttl{font-size:10px;color:var(--dim);min-width:60px;text-align:left}
-.sub-server{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:8px}
-.sub-server-name{font-weight:700;font-size:13px;color:var(--accent);margin-bottom:6px}
-.sub-server-detail{font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace;direction:ltr;text-align:left;word-break:break-all}
 </style>
 </head>
 <body>
@@ -430,6 +412,9 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div class="menu-icon">🔐</div>
     <div><div class="menu-label">Password Generator</div><div class="menu-desc">ساخت رمز ۳۲ کاراکتری قوی</div></div>
   </div>
+  
+    <div><div class="menu-label">IP Scanner</div><div class="menu-desc">بررسی اطلاعات IP آنلاین</div></div>
+  </div>
   <div class="menu-item" id="nav-cfscan" data-page="cfscan">
     <div class="menu-icon">☁️</div>
     <div><div class="menu-label">Cloudflare Scanner</div><div class="menu-desc">اسکن آیپی‌های Cloudflare</div></div>
@@ -444,27 +429,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div class="menu-icon">📬</div>
     <div><div class="menu-label">تلگرام</div><div class="menu-desc">پشتیبانی و آپدیت</div></div>
   </a>
-  <div class="menu-section">ابزارهای وب</div>
-  <div class="menu-item" id="nav-dns" data-page="dns">
-    <div class="menu-icon">🌐</div>
-    <div><div class="menu-label">DNS Lookup</div><div class="menu-desc">بررسی رکوردهای DNS</div></div>
-  </div>
-  <div class="menu-item" id="nav-json" data-page="json">
-    <div class="menu-icon">📝</div>
-    <div><div class="menu-label">JSON Formatter</div><div class="menu-desc">فرمت و تبدیل JSON</div></div>
-  </div>
-  <div class="menu-item" id="nav-base64" data-page="base64">
-    <div class="menu-icon">📋</div>
-    <div><div class="menu-label">Base64</div><div class="menu-desc">کدگذاری و کدگشایی</div></div>
-  </div>
-  <div class="menu-item" id="nav-sub" data-page="sub">
-    <div class="menu-icon">🔄</div>
-    <div><div class="menu-label">Subscription Converter</div><div class="menu-desc">تبدیل لینک اشتراک</div></div>
-  </div>
-  <div class="menu-item" id="nav-time" data-page="time">
-    <div class="menu-icon">⏰</div>
-    <div><div class="menu-label">Timestamp Converter</div><div class="menu-desc">تبدیل زمان و تاریخ</div></div>
-  </div>
   
   <div class="menu-section">ابزارهای وب</div>
   <div class="menu-item" id="nav-dns" data-page="dns">
@@ -618,110 +582,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   </div>
 </div>
 
-<div class="page" id="page-dns">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">🌐</div>
-      <div><div class="card-title">DNS Lookup</div><div class="card-subtitle">بررسی رکوردهای DNS دامنه</div></div>
-    </div>
-    <div class="section-title">نام دامنه را وارد کنید</div>
-    <div class="scan-input" style="margin-bottom:12px">
-      <input type="text" class="t-tool-input" id="dnsDomain" placeholder="مثال: example.com">
-    </div>
-    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
-      <label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--dim);cursor:pointer"><input type="checkbox" class="dns-type-cb" value="A" checked> A</label>
-      <label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--dim);cursor:pointer"><input type="checkbox" class="dns-type-cb" value="AAAA" checked> AAAA</label>
-      <label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--dim);cursor:pointer"><input type="checkbox" class="dns-type-cb" value="MX" checked> MX</label>
-      <label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--dim);cursor:pointer"><input type="checkbox" class="dns-type-cb" value="NS" checked> NS</label>
-      <label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--dim);cursor:pointer"><input type="checkbox" class="dns-type-cb" value="TXT" checked> TXT</label>
-      <label style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--dim);cursor:pointer"><input type="checkbox" class="dns-type-cb" value="CNAME"> CNAME</label>
-    </div>
-    <button class="btn" id="dnsLookupBtn">🔍 جستجوی DNS</button>
-    <div id="dnsResults" style="margin-top:16px"></div>
-  </div>
-</div>
-
-<div class="page" id="page-json">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">📝</div>
-      <div><div class="card-title">JSON Formatter</div><div class="card-subtitle">فرمت و تبدیل JSON</div></div>
-    </div>
-    <div class="section-title">JSON را وارد کنید</div>
-    <textarea class="t-tool-textarea" id="jsonInput" placeholder='{"key": "value"}' style="min-height:150px"></textarea>
-    <div class="t-btn-row">
-      <button class="t-btn" id="jsonPrettifyBtn">✨ زیباسازی</button>
-      <button class="t-btn t-btn-secondary" id="jsonMinifyBtn">📦 فشرده‌سازی</button>
-      <button class="t-btn t-btn-secondary" id="jsonCopyBtn">📋 کپی</button>
-    </div>
-    <div class="section-title" style="margin-top:16px">نتیجه</div>
-    <div class="t-result" id="jsonResult" style="min-height:60px">نتیجه اینجا نمایش داده میشود...</div>
-  </div>
-</div>
-
-<div class="page" id="page-base64">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">📋</div>
-      <div><div class="card-title">Base64</div><div class="card-subtitle">کدگذاری و کدگشایی Base64</div></div>
-    </div>
-    <div class="section-title">متن را وارد کنید</div>
-    <textarea class="t-tool-textarea" id="b64Input" placeholder="متن مورد نظر را اینجا بنویسید..." style="min-height:100px"></textarea>
-    <div class="t-btn-row">
-      <button class="t-btn" id="b64EncodeBtn">🔒 کدگذاری (Encode)</button>
-      <button class="t-btn t-btn-secondary" id="b64DecodeBtn">🔓 کدگشایی (Decode)</button>
-      <button class="t-btn t-btn-secondary" id="b64CopyBtn">📋 کپی</button>
-    </div>
-    <div class="section-title" style="margin-top:16px">نتیجه</div>
-    <div class="t-result" id="b64Result" style="min-height:60px">نتیجه اینجا نمایش داده میشود...</div>
-  </div>
-</div>
-
-<div class="page" id="page-sub">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">🔄</div>
-      <div><div class="card-title">Subscription Converter</div><div class="card-subtitle">تبدیل لینک اشتراک V2Ray/Clash</div></div>
-    </div>
-    <div class="section-title">لینک اشتراک یا محتوای Base64 را وارد کنید</div>
-    <textarea class="t-tool-textarea" id="subInput" placeholder="لینک اشتراک یا متن Base64 را اینجا بزنید..." style="min-height:120px"></textarea>
-    <div class="t-btn-row">
-      <button class="t-btn" id="subParseBtn">🔍 تحلیل و نمایش سرورها</button>
-      <button class="t-btn t-btn-secondary" id="subClearBtn">🗑️ پاک کردن</button>
-    </div>
-    <div id="subResults" style="margin-top:16px"></div>
-  </div>
-</div>
-
-<div class="page" id="page-time">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">⏰</div>
-      <div><div class="card-title">Timestamp Converter</div><div class="card-subtitle">تبدیل زمان Unix و تاریخ میلادی</div></div>
-    </div>
-    <div class="section-title">تبدیل Unix Timestamp به تاریخ</div>
-    <div class="scan-input" style="margin-bottom:8px">
-      <input type="text" class="t-tool-input" id="tsInput" placeholder="مثال: 1700000000">
-      <button class="scan-btn" id="tsConvertBtn">🔄 تبدیل</button>
-    </div>
-    <div class="t-result" id="tsResult" style="min-height:40px">نتیجه اینجا نمایش داده میشود...</div>
-    <div style="text-align:center;margin:12px 0;color:var(--dim);font-size:12px">— یا —</div>
-    <div class="section-title">تبدیل تاریخ به Unix Timestamp</div>
-    <div style="display:flex;gap:8px;margin-bottom:8px">
-      <input type="datetime-local" class="t-tool-input" id="dateInput" style="flex:1">
-      <button class="scan-btn" id="dateConvertBtn">🔄 تبدیل</button>
-    </div>
-    <div class="t-result" id="dateResult" style="min-height:40px">نتیجه اینجا نمایش داده میشود...</div>
-    <div style="text-align:center;margin:12px 0;color:var(--dim);font-size:12px">— زمان فعلی —</div>
-    <div style="text-align:center">
-      <div style="font-size:28px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace" id="liveTime">--:--:--</div>
-      <div style="font-size:12px;color:var(--dim);margin-top:4px" id="liveDate">---</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:4px">Unix: <span id="liveTs" style="color:var(--accent)">---</span></div>
-    </div>
-  </div>
-</div>
-
-<a class="floating" href="https://t.me/Arshia_Kennedy" target="_blank" rel="noopener">📬 تلگرام</a>
 <a class="floating" href="https://t.me/Arshia_Kennedy" target="_blank" rel="noopener">📬 تلگرام</a>
 
 <div class="page" id="page-dns">
@@ -730,27 +590,25 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <div class="card-icon">🌐</div>
       <div><div class="card-title">DNS Lookup</div><div class="card-subtitle">بررسی رکوردهای DNS هر دامنه</div></div>
     </div>
-    <div class="scan-input"><input type="text" id="dnsInput" placeholder="دامنه را وارد کنید (مثال: google.com)" style="direction:ltr;text-align:left"></div>
-    <button class="btn" id="dnsBtn" onclick="dnsLookup()">🔍 جستجو</button>
+    <div class="scan-input"><input type="text" id="dnsInput" placeholder="دامنه (google.com)" style="direction:ltr;text-align:left"></div>
+    <button class="btn" id="dnsBtn">🔍 جستجو</button>
     <div id="dnsResult" style="display:none;margin-top:16px"></div>
   </div>
 </div>
-
 <div class="page" id="page-json">
   <div class="card">
     <div class="card-header">
       <div class="card-icon">📝</div>
       <div><div class="card-title">JSON Formatter</div><div class="card-subtitle">فرمت و تبدیل JSON</div></div>
     </div>
-    <textarea id="jsonInput" class="input" rows="6" placeholder='JSON را اینجا بزنید...' style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical"></textarea>
+    <textarea id="jsonInput" class="input" rows="6" placeholder="JSON را اینجا بزنید..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical"></textarea>
     <div style="display:flex;gap:8px;margin-top:12px">
-      <button class="btn" onclick="jsonPretty()" style="flex:1">✨ فرمت</button>
-      <button class="btn" onclick="jsonMinify()" style="flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text)">📦 فشرده</button>
+      <button class="btn" id="jsonPrettyBtn" style="flex:1">✨ فرمت</button>
+      <button class="btn" id="jsonMinBtn" style="flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text)">📦 فشرده</button>
     </div>
     <textarea id="jsonOutput" class="input" rows="6" readonly placeholder="نتیجه..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical;margin-top:12px"></textarea>
   </div>
 </div>
-
 <div class="page" id="page-base64">
   <div class="card">
     <div class="card-header">
@@ -759,13 +617,12 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     </div>
     <textarea id="b64Input" class="input" rows="4" placeholder="متن را اینجا بزنید..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical"></textarea>
     <div style="display:flex;gap:8px;margin-top:12px">
-      <button class="btn" onclick="b64Encode()" style="flex:1">🔒 کدگذاری</button>
-      <button class="btn" onclick="b64Decode()" style="flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text)">🔓 کدگشایی</button>
+      <button class="btn" id="b64EncBtn" style="flex:1">🔒 کدگذاری</button>
+      <button class="btn" id="b64DecBtn" style="flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text)">🔓 کدگشایی</button>
     </div>
     <textarea id="b64Output" class="input" rows="4" readonly placeholder="نتیجه..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical;margin-top:12px"></textarea>
   </div>
 </div>
-
 <div class="page" id="page-sub">
   <div class="card">
     <div class="card-header">
@@ -773,11 +630,10 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <div><div class="card-title">Subscription Converter</div><div class="card-subtitle">تبدیل لینک اشتراک V2Ray/Clash</div></div>
     </div>
     <textarea id="subInput" class="input" rows="4" placeholder="لینک اشتراک را اینجا بزنید..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical"></textarea>
-    <button class="btn" onclick="parseSub()" style="margin-top:12px">🔄 تبدیل و نمایش سرورها</button>
+    <button class="btn" id="subBtn" style="margin-top:12px">🔄 تبدیل و نمایش سرورها</button>
     <div id="subResult" style="display:none;margin-top:16px"></div>
   </div>
 </div>
-
 <div class="page" id="page-time">
   <div class="card">
     <div class="card-header">
@@ -785,21 +641,18 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <div><div class="card-title">Timestamp Converter</div><div class="card-subtitle">تبدیل زمان unix به تاریخ و بالعکس</div></div>
     </div>
     <div style="margin-bottom:16px">
-      <div class="section-title"> Unix Timestamp → تاریخ</div>
+      <div class="section-title">Unix Timestamp → تاریخ</div>
       <div style="display:flex;gap:8px">
-        <input type="text" id="tsInput" class="input" placeholder="مثال: 1700000000" style="direction:ltr;text-align:left;flex:1">
-        <button class="btn" onclick="tsToDate()" style="width:auto;padding:0 20px">تبدیل</button>
+        <input type="text" id="tsInput" class="input" placeholder="1700000000" style="direction:ltr;text-align:left;flex:1">
+        <button class="btn" id="tsBtn" style="width:auto;padding:0 20px">تبدیل</button>
       </div>
       <div id="tsResult1" style="margin-top:8px;font-size:13px;color:var(--accent)"></div>
     </div>
     <div>
       <div class="section-title">تاریخ → Unix Timestamp</div>
       <input type="datetime-local" id="dateInput" class="input" style="margin-bottom:8px">
-      <button class="btn" onclick="dateToTs()">تبدیل</button>
+      <button class="btn" id="dateBtn">تبدیل</button>
       <div id="tsResult2" style="margin-top:8px;font-size:13px;color:var(--accent)"></div>
-    </div>
-    <div style="margin-top:16px;text-align:center;font-size:12px;color:var(--dim)">
-      زمان فعلی: <span id="currentTime" style="color:var(--accent)"></span>
     </div>
   </div>
 </div>
@@ -814,24 +667,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   function closeMenu(){$('menuOverlay').classList.remove('active');$('sidebar').classList.remove('active')}
   function showPage(page){
     document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
-  
-  $('dnsLookupBtn').addEventListener('click', dnsLookup);
-  $('jsonPrettifyBtn').addEventListener('click', jsonPrettify);
-  $('jsonMinifyBtn').addEventListener('click', jsonMinify);
-  $('b64EncodeBtn').addEventListener('click', b64Encode);
-  $('b64DecodeBtn').addEventListener('click', b64Decode);
-  $('b64CopyBtn').addEventListener('click', b64Copy);
-  $('subParseBtn').addEventListener('click', parseSub);
-  $('subClearBtn').addEventListener('click', function(){$('subInput').value='';$('subResults').innerHTML=''});
-  $('tsConvertBtn').addEventListener('click', tsToDate);
-  $('dateConvertBtn').addEventListener('click', dateToTs);
-  $('jsonCopyBtn').addEventListener('click', function(){
-    var text=$('jsonResult').textContent;
-    if(text.indexOf('نتیجه اینجا')>=0){showToast('⚠️ ابتدا عملیاتی انجام دهید');return}
-    navigator.clipboard.writeText(text).then(function(){showToast('✅ کپی شد!')}).catch(function(){showToast('❌ خطا')});
-  });
-
-  document.querySelectorAll('.menu-item[data-page]').forEach(function(m){m.classList.remove('active')});
+    document.querySelectorAll('.menu-item[data-page]').forEach(function(m){m.classList.remove('active')});
     var el=$('page-'+page);if(el)el.classList.add('active');
     var nav=$('nav-'+page);if(nav)nav.classList.add('active');
     
@@ -839,7 +675,57 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   }
   function showToast(msg){var t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
 
-  async async function generate(){
+  async 
+  // DNS Lookup
+  function doDNSLookup(){
+    var domain=$('dnsInput').value.trim();
+    if(!domain){showToast('⚠️ دامنه را وارد کنید');return}
+    $('dnsResult').style.display='none';showToast('⏳ در حال جستجو...');
+    var types=['A','AAAA','MX','NS','TXT','CNAME'];var results=[];var done=0;
+    types.forEach(function(type){
+      fetch('https://dns.google/resolve?name='+domain+'&type='+type)
+      .then(function(r){return r.json()}).then(function(d){
+        if(d.Answer&&d.Answer.length>0)results.push({type:type,records:d.Answer});
+        done++;if(done===types.length)showDNSR(domain,results);
+      }).catch(function(){done++;if(done===types.length)showDNSR(domain,results)});
+    });
+  }
+  function showDNSR(domain,results){
+    if(results.length===0){$('dnsResult').innerHTML='<div style="text-align:center;color:var(--dim);padding:20px">رکوردی یافت نشد</div>';$('dnsResult').style.display='block';return}
+    var h='<div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--accent)">نتایج '+domain+'</div>';
+    results.forEach(function(r){
+      h+='<div style="margin-bottom:12px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:12px">';
+      h+='<div style="font-size:11px;font-weight:700;color:var(--success);margin-bottom:6px">'+r.type+'</div>';
+      r.records.forEach(function(rec){h+='<div style="font-size:12px;color:var(--text);direction:ltr;text-align:left;font-family:monospace;margin:4px 0">'+rec.data+'</div>'});
+      h+='</div>';
+    });$('dnsResult').innerHTML=h;$('dnsResult').style.display='block';showToast('✅ یافت شد');
+  }
+  // JSON
+  function doJsonPretty(){try{$('jsonOutput').value=JSON.stringify(JSON.parse($('jsonInput').value),null,2);showToast('✅ فرمت شد')}catch(e){showToast('❌ '+e.message)}}
+  function doJsonMinify(){try{$('jsonOutput').value=JSON.stringify(JSON.parse($('jsonInput').value));showToast('✅ فشرده شد')}catch(e){showToast('❌ '+e.message)}}
+  // Base64
+  function doB64Enc(){$('b64Output').value=btoa(unescape(encodeURIComponent($('b64Input').value)));showToast('✅ کدگذاری شد')}
+  function doB64Dec(){try{$('b64Output').value=decodeURIComponent(escape(atob($('b64Input').value)));showToast('✅ کدگشایی شد')}catch(e){showToast('❌ '+e.message)}}
+  // Sub
+  function doSubParse(){
+    var url=$('subInput').value.trim();if(!url){showToast('⚠️ لینک را وارد کنید');return}
+    showToast('⏳ در حال دریافت...');
+    fetch(url).then(function(r){return r.text()}).then(function(text){
+      var d=text;try{d=decodeURIComponent(escape(atob(text.trim())))}catch(e){}
+      var lines=d.split('\n').filter(function(l){return l.trim()});
+      var h='<div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--accent)">تعداد سرورها: '+lines.length+'</div>';
+      lines.forEach(function(l){var t=l.split('://')[0]||'?';
+        h+='<div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px">';
+        h+='<div style="font-size:11px;color:var(--success);font-weight:700">'+t.toUpperCase()+'</div>';
+        h+='<div style="font-size:11px;color:var(--dim);direction:ltr;text-align:left;font-family:monospace;margin-top:4px">'+l.substring(0,80)+'...</div></div>';
+      });$('subResult').innerHTML=h;$('subResult').style.display='block';showToast('✅ '+lines.length+' سرور');
+    }).catch(function(e){showToast('❌ '+e.message)});
+  }
+  // Time
+  function doTsToDate(){var ts=parseInt($('tsInput').value);if(isNaN(ts)){showToast('⚠️ عدد وارد کنید');return}if(ts<1e12)ts*=1000;$('tsResult1').textContent=new Date(ts).toLocaleString('fa-IR')+' | '+new Date(ts).toISOString();showToast('✅')}
+  function doDateToTs(){var v=$('dateInput').value;if(!v){showToast('⚠️ تاریخ را انتخاب کنید');return}$('tsResult2').textContent=Math.floor(new Date(v).getTime()/1000);showToast('✅')}
+
+  async function generate(){
     try{
       $('generateBtn').textContent='⏳ ...';$('generateBtn').disabled=true;
       var r=await fetch('/api/generate');var d=await r.json();
@@ -959,174 +845,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
 
   function copyPanelURL(){var url=$('res-url').textContent;navigator.clipboard.writeText(url).then(function(){showToast('✅ لینک کپی شد!')}).catch(function(){showToast('❌ خطا')})}
 
-
-  // === DNS Lookup ===
-  async function dnsLookup(){
-    var domain=$('dnsDomain').value.trim();
-    if(!domain){showToast('⚠️ نام دامنه را وارد کنید');return}
-    $('dnsLookupBtn').textContent='⏳ در حال جستجو...';$('dnsLookupBtn').disabled=true;
-    $('dnsResults').innerHTML='';
-    var types=[];document.querySelectorAll('.dns-type-cb:checked').forEach(function(cb){types.push(cb.value)});
-    if(!types.length){types=['A','AAAA','MX','NS','TXT']}
-    var allResults=[];
-    for(var i=0;i<types.length;i++){
-      try{
-        var r=await fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type='+types[i]);
-        var d=await r.json();
-        if(d.Answer){
-          d.Answer.forEach(function(ans){
-            allResults.push({type:types[i],data:ans.data,ttl:ans.TTL});
-          });
-        }
-      }catch(e){}
-    }
-    if(!allResults.length){
-      $('dnsResults').innerHTML='<div style="text-align:center;color:var(--dim);padding:20px;font-size:13px">🔍 رکوردی یافت نشد</div>';
-    }else{
-      var html='';
-      allResults.forEach(function(r){
-        html+='<div class="dns-rec"><div class="dns-type">'+r.type+'</div><div class="dns-data">'+r.data+'</div><div class="dns-ttl">TTL: '+r.ttl+'</div></div>';
-      });
-      $('dnsResults').innerHTML=html;
-    }
-    $('dnsLookupBtn').textContent='🔍 جستجوی DNS';$('dnsLookupBtn').disabled=false;
-  }
-
-  // === JSON Formatter ===
-  function jsonPrettify(){
-    var input=$('jsonInput').value.trim();
-    if(!input){showToast('⚠️ متن JSON را وارد کنید');return}
-    try{
-      var obj=JSON.parse(input);
-      $('jsonResult').textContent=JSON.stringify(obj,null,2);
-      showToast('✅ فرمت شد!');
-    }catch(e){$('jsonResult').textContent='❌ خطا: '+e.message;$('jsonResult').style.color='var(--danger)'}
-  }
-  function jsonMinify(){
-    var input=$('jsonInput').value.trim();
-    if(!input){showToast('⚠️ متن JSON را وارد کنید');return}
-    try{
-      var obj=JSON.parse(input);
-      $('jsonResult').textContent=JSON.stringify(obj);
-      showToast('✅ فشرده شد!');
-    }catch(e){$('jsonResult').textContent='❌ خطا: '+e.message;$('jsonResult').style.color='var(--danger)'}
-  }
-
-  // === Base64 ===
-  function b64Encode(){
-    var input=$('b64Input').value;
-    if(!input){showToast('⚠️ متن را وارد کنید');return}
-    try{
-      $('b64Result').textContent=btoa(unescape(encodeURIComponent(input)));
-      showToast('✅ کدگذاری شد!');
-    }catch(e){$('b64Result').textContent='❌ خطا: '+e.message}
-  }
-  function b64Decode(){
-    var input=$('b64Input').value.trim();
-    if(!input){showToast('⚠️ متن Base64 را وارد کنید');return}
-    try{
-      $('b64Result').textContent=decodeURIComponent(escape(atob(input)));
-      showToast('✅ کدگشایی شد!');
-    }catch(e){$('b64Result').textContent='❌ خطا: '+e.message}
-  }
-  function b64Copy(){
-    var text=$('b64Result').textContent;
-    if(!text||text.indexOf('نتیجه اینجا')>=0){showToast('⚠️ ابتدا عملیاتی انجام دهید');return}
-    navigator.clipboard.writeText(text).then(function(){showToast('✅ کپی شد!')}).catch(function(){showToast('❌ خطا')});
-  }
-
-  // === Subscription Converter ===
-  function parseSub(){
-    var input=$('subInput').value.trim();
-    if(!input){showToast('⚠️ لینک یا متن را وارد کنید');return}
-    var lines=[];
-    if(input.indexOf('://')>=0&&input.indexOf('
-')<0){
-      // It's a URL - try fetching
-      $('subParseBtn').textContent='⏳ در حال دانلود...';$('subParseBtn').disabled=true;
-      fetch(input).then(function(r){return r.text()}).then(function(text){
-        parseSubContent(text);
-        $('subParseBtn').textContent='🔍 تحلیل و نمایش سرورها';$('subParseBtn').disabled=false;
-      }).catch(function(e){
-        // Try base64 decode first
-        try{var decoded=decodeURIComponent(escape(atob(input)));parseSubContent(decoded)}
-        catch(e2){$('subResults').innerHTML='<div style="color:var(--danger);padding:16px;font-size:13px">❌ خطا در دانلود: '+e.message+'</div>'}
-        $('subParseBtn').textContent='🔍 تحلیل و نمایش سرورها';$('subParseBtn').disabled=false;
-      });
-      return;
-    }
-    parseSubContent(input);
-  }
-  function parseSubContent(text){
-    text=text.trim();
-    var decoded='';
-    try{decoded=decodeURIComponent(escape(atob(text)))}catch(e){decoded=text}
-    var lines=decoded.split('\n').filter(function(l){return l.trim().length>0});
-    var servers=[];
-    lines.forEach(function(line){
-      line=line.trim();
-      if(line.indexOf('vmess://')===0){
-        try{
-          var data=JSON.parse(atob(line.substring(8)));
-          servers.push({type:'VMess',name:data.ps||data.add||'Unknown',address:data.add,port:data.port,net:data.net||'tcp'});
-        }catch(e){}
-      }else if(line.indexOf('vless://')===0||line.indexOf('trojan://')===0||line.indexOf('ss://')===0){
-        var proto=line.split('://')[0];
-        var rest=line.split('://')[1];
-        var atIdx=rest.lastIndexOf('@');
-        if(atIdx>0){
-          var serverPart=rest.substring(0,atIdx);
-          var hostPort=rest.substring(atIdx+1);
-          var nameIdx=rest.indexOf('#');
-          var name=nameIdx>0?decodeURIComponent(rest.substring(nameIdx+1)):hostPort;
-          var hp=hostPort.split('?')[0].split(':');
-          servers.push({type:proto.toUpperCase(),name:name,address:hp[0]||'',port:hp[1]||'',net:''});
-        }
-      }else if(line.indexOf('ssr://')===0){
-        servers.push({type:'SSR',name:'SSR Server',address:'(encoded)',port:'',net:''});
-      }
-    });
-    if(!servers.length){
-      $('subResults').innerHTML='<div style="text-align:center;color:var(--dim);padding:20px;font-size:13px">🔍 سروری یافت نشد</div>';
-      return;
-    }
-    var html='<div class="section-title">تعداد سرورها: '+servers.length+'</div>';
-    servers.forEach(function(s,i){
-      html+='<div class="sub-server"><div class="sub-server-name">'+s.type+' - '+s.name+'</div>';
-      html+='<div class="sub-server-detail">'+(s.address?'آدرس: '+s.address:'')+(s.port?' | پورت: '+s.port:'')+(s.net?' | نوع: '+s.net:'')+'</div></div>';
-    });
-    $('subResults').innerHTML=html;
-    showToast('✅ '+servers.length+' سرور یافت شد!');
-  }
-
-  // === Timestamp Converter ===
-  function tsToDate(){
-    var ts=$('tsInput').value.trim();
-    if(!ts){showToast('⚠️ عدد Timestamp را وارد کنید');return}
-    var num=parseInt(ts);
-    if(isNaN(num)){$('tsResult').textContent='❌ عدد نامعتبر است';return}
-    if(ts.length<=10)num=num*1000; // seconds to ms
-    var d=new Date(num);
-    if(isNaN(d.getTime())){$('tsResult').textContent='❌ تاریخ نامعتبر است';return}
-    $('tsResult').textContent='📅 تاریخ: '+d.toLocaleDateString('fa-IR')+'\n🕐 ساعت: '+d.toLocaleTimeString('fa-IR')+'\n🔢 Timestamp: '+Math.floor(d.getTime()/1000)+'\n📋 ISO: '+d.toISOString()+'\n📋 UTC: '+d.toUTCString();
-    showToast('✅ تبدیل شد!');
-  }
-  function dateToTs(){
-    var v=$('dateInput').value;
-    if(!v){showToast('⚠️ تاریخ را انتخاب کنید');return}
-    var d=new Date(v);
-    $('dateResult').textContent='🔢 Unix Timestamp (ثانیه): '+Math.floor(d.getTime()/1000)+'\n🔢 Unix Timestamp (میلی‌ثانیه): '+d.getTime()+'\n📋 ISO: '+d.toISOString()+'\n📋 UTC: '+d.toUTCString();
-    showToast('✅ تبدیل شد!');
-  }
-  function updateLiveTime(){
-    var now=new Date();
-    $('liveTime').textContent=now.toLocaleTimeString('fa-IR');
-    $('liveDate').textContent=now.toLocaleDateString('fa-IR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    $('liveTs').textContent=Math.floor(now.getTime()/1000);
-  }
-  setInterval(updateLiveTime,1000);updateLiveTime();
-
-
   // All event listeners
   $('hamburgerBtn').addEventListener('click', openMenu);
   $('closeBtn').addEventListener('click', closeMenu);
@@ -1148,6 +866,15 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   });
 
   generate();
+
+  $('dnsBtn').addEventListener('click', doDNSLookup);
+  $('jsonPrettyBtn').addEventListener('click', doJsonPretty);
+  $('jsonMinBtn').addEventListener('click', doJsonMinify);
+  $('b64EncBtn').addEventListener('click', doB64Enc);
+  $('b64DecBtn').addEventListener('click', doB64Dec);
+  $('subBtn').addEventListener('click', doSubParse);
+  $('tsBtn').addEventListener('click', doTsToDate);
+  $('dateBtn').addEventListener('click', doDateToTs);
   
   // Security: Clear sensitive data on page unload
   window.addEventListener('beforeunload', function(){
@@ -1155,80 +882,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     var t=document.getElementById('cfToken');if(t)t.value='';
     var e=document.getElementById('cfEmail');if(e)e.value='';
   });
-
-function dnsLookup(){
-  var domain=$('dnsInput').value.trim();
-  if(!domain){showToast('⚠️ دامنه را وارد کنید');return}
-  $('dnsResult').style.display='none';showToast('⏳ در حال جستجو...');
-  var types=['A','AAAA','MX','NS','TXT','CNAME'];
-  var results=[];
-  var done=0;
-  types.forEach(function(type){
-    fetch('https://dns.google/resolve?name='+domain+'&type='+type)
-    .then(function(r){return r.json()})
-    .then(function(d){
-      if(d.Answer&&d.Answer.length>0){
-        results.push({type:type,records:d.Answer});
-      }
-      done++;
-      if(done===types.length)showDNSResults(domain,results);
-    })
-    .catch(function(){done++;if(done===types.length)showDNSResults(domain,results)});
-  });
-}
-function showDNSResults(domain,results){
-  if(results.length===0){$('dnsResult').innerHTML='<div style="text-align:center;color:var(--dim);padding:20px">رکوردی یافت نشد</div>'; $('dnsResult').style.display='block';return}
-  var html='<div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--accent)">نتایج '+domain+'</div>';
-  results.forEach(function(r){
-    html+='<div style="margin-bottom:12px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:12px">';
-    html+='<div style="font-size:11px;font-weight:700;color:var(--success);margin-bottom:6px">'+r.type+'</div>';
-    r.records.forEach(function(rec){html+='<div style="font-size:12px;color:var(--text);direction:ltr;text-align:left;font-family:monospace;margin:4px 0">'+rec.data+'</div>'});
-    html+='</div>';
-  });
-  $('dnsResult').innerHTML=html;$('dnsResult').style.display='block';
-  showToast('✅ یافت شد: '+results.length+' نوع رکورد');
-}
-function jsonPretty(){try{var d=JSON.parse($('jsonInput').value);$('jsonOutput').value=JSON.stringify(d,null,2);showToast('✅ فرمت شد')}catch(e){showToast('❌ JSON نامعتبر: '+e.message)}}
-function jsonMinify(){try{var d=JSON.parse($('jsonInput').value);$('jsonOutput').value=JSON.stringify(d);showToast('✅ فشرده شد')}catch(e){showToast('❌ JSON نامعتبر: '+e.message)}}
-function b64Encode(){try{$('b64Output').value=btoa(unescape(encodeURIComponent($('b64Input').value)));showToast('✅ کدگذاری شد')}catch(e){showToast('❌ خطا: '+e.message)}}
-function b64Decode(){try{$('b64Output').value=decodeURIComponent(escape(atob($('b64Input').value)));showToast('✅ کدگشایی شد')}catch(e){showToast('❌ خطا: '+e.message)}}
-function parseSub(){
-  var url=$('subInput').value.trim();
-  if(!url){showToast('⚠️ لینک را وارد کنید');return}
-  showToast('⏳ در حال دریافت...');
-  fetch(url).then(function(r){return r.text()}).then(function(text){
-    var decoded=text;
-    try{decoded=decodeURIComponent(escape(atob(text.trim())))}catch(e){}
-    var lines=decoded.split('\n').filter(function(l){return l.trim().length>0});
-    var html='<div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--accent)">تعداد سرورها: '+lines.length+'</div>';
-    lines.forEach(function(line,i++){
-      var type=line.split('://')[0]||'?';
-      var server=line.substring(0,80)+'...';
-      html+='<div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px">';
-      html+='<div style="font-size:11px;color:var(--success);font-weight:700">'+type.toUpperCase()+'</div>';
-      html+='<div style="font-size:11px;color:var(--dim);direction:ltr;text-align:left;font-family:monospace;margin-top:4px">'+server+'</div>';
-      html+='</div>';
-    });
-    $('subResult').innerHTML=html;$('subResult').style.display='block';
-    showToast('✅ '+lines.length+' سرور یافت شد');
-  }).catch(function(e){showToast('❌ خطا در دریافت: '+e.message)});
-}
-function tsToDate(){
-  var ts=parseInt($('tsInput').value);
-  if(isNaN(ts)){showToast('⚠️ عدد وارد کنید');return}
-  if(ts<1e12)ts*=1000;
-  var d=new Date(ts);
-  $('tsResult1').textContent=d.toLocaleString('fa-IR')+' | '+d.toISOString();
-  showToast('✅ تبدیل شد');
-}
-function dateToTs(){
-  var v=$('dateInput').value;
-  if(!v){showToast('⚠️ تاریخ را انتخاب کنید');return}
-  var ts=Math.floor(new Date(v).getTime()/1000);
-  $('tsResult2').textContent=ts+' | '+new Date(v).toISOString();
-  showToast('✅ تبدیل شد');
-}
-setInterval(function(){var e=document.getElementById('currentTime');if(e)e.textContent=new Date().toLocaleString('fa-IR')},1000);
 })();
 </script>
 </body>
