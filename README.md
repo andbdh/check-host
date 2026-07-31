@@ -2,7 +2,7 @@
 
 ابزار همه‌کاره Cloudflare Worker
 
-**🔗 استفاده آنلاین:** https://chatbox.arsh-d62.workers.dev/
+**🔗 استفاده آنلاین:** wizardcf.dpdns.org
 
 ## ابزارها
 
