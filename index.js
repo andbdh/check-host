@@ -2,7 +2,7 @@
 export default {
   async fetch(request) {
     const url = new URL(request.url);
-    const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' };
+    const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block', 'Referrer-Policy': 'no-referrer', 'Permissions-Policy': 'camera=(), microphone=(), geolocation=()' };
     
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
     
@@ -507,6 +507,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <button class="btn" id="createTokenBtn" onclick="createToken()" style="flex:1;background:linear-gradient(135deg,#6c5ce7,#a29bfe)">🔑 ساخت توکن</button>
     </div>
     <div style="font-size:11px;color:var(--dim);margin-bottom:16px;text-align:center">API Token نداری؟ روی «🔑 ساخت توکن» بزن → توکن بساز → کپی کن → اینجا بزن</div>
+<div style="font-size:10px;color:var(--dim);margin-bottom:12px;text-align:center;padding:8px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid rgba(255,255,255,0.05)">🔒 توکن شما ذخیره نمیشود و فقط برای نصب پنل استفاده میشود</div>
     <div id="accountInfo" style="display:none;margin-bottom:16px">
       <div class="scan-result">
         <div class="scan-row"><div class="scan-label">اکانت</div><div class="scan-value" id="accName">-</div></div>
@@ -676,6 +677,8 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       if(!d.success){showToast('❌ '+d.error);$('validateBtn').textContent='🔍 بررسی';$('validateBtn').disabled=false;return}
       validatedToken=token;validatedAccountId=d.accountId;
       if(email)validatedEmail=email;
+      // Clear input fields for security
+      $('cfToken').value='';$('cfEmail').value='';
       $('accName').textContent=d.accountName;$('accId').textContent=d.accountId;
       $('accountInfo').style.display='block';$('panelSelect').style.display='block';
       $('validateBtn').textContent='✅ معتبر';
@@ -753,6 +756,13 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   });
 
   generate();
+  
+  // Security: Clear sensitive data on page unload
+  window.addEventListener('beforeunload', function(){
+    validatedToken=null;validatedAccountId=null;validatedEmail=null;
+    var t=document.getElementById('cfToken');if(t)t.value='';
+    var e=document.getElementById('cfEmail');if(e)e.value='';
+  });
 })();
 </script>
 </body>
