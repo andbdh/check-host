@@ -408,7 +408,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <button class="close-btn" id="closeBtn">✕</button>
   </div>
   <div class="menu-section">ابزارها</div>
-  <div class="menu-item active" id="nav-passgen" data-page="passgen">
+  <div class="menu-item" id="nav-passgen" data-page="passgen">
     <div class="menu-icon">🔐</div>
     <div><div class="menu-label">Password Generator</div><div class="menu-desc">ساخت رمز ۳۲ کاراکتری قوی</div></div>
   </div>
@@ -421,7 +421,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div><div class="menu-label">Cloudflare Scanner</div><div class="menu-desc">اسکن آیپی‌های Cloudflare</div></div>
   </div>
   <div class="menu-section">ابزارهای پیشرفته</div>
-  <div class="menu-item" id="nav-wizard" data-page="wizard">
+  <div class="menu-item active" id="nav-wizard" data-page="wizard">
     <div class="menu-icon">🧙</div>
     <div><div class="menu-label">Wizard</div><div class="menu-desc">نصب خودکار پنل‌ها</div></div>
   </div>
@@ -440,7 +440,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   </div>
 </div>
 
-<div class="page active" id="page-passgen">
+<div class="page" id="page-passgen">
   <div class="card">
     <div class="card-header">
       <div class="card-icon">🔐</div>
@@ -489,7 +489,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   </div>
 </div>
 
-<div class="page" id="page-wizard">
+<div class="page active" id="page-wizard">
   <div class="card">
     <div class="card-header">
       <div class="card-icon">🧙</div>
