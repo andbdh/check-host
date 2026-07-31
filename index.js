@@ -313,6 +313,9 @@ const UI = `<!DOCTYPE html>
 <style>*{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#08080f;--bg2:#0d0d1a;--card:rgba(16,16,30,0.85);--card2:rgba(20,20,35,0.9);--accent:#00e5c3;--accent2:#00ffd5;--text:#e2e8f0;--text-bright:#f8fafc;--dim:#64748b;--border:rgba(255,255,255,0.06);--success:#00e5c3;--danger:#f43f5e;--purple:#a78bfa;--blue:#3b82f6;--orange:#f59e0b;--glow:rgba(0,229,195,0.15);--glow2:rgba(0,229,195,0.08)}
 body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);background-image:radial-gradient(ellipse at 20% 0%,rgba(0,229,195,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(167,139,250,0.04) 0%,transparent 50%);background-attachment:fixed;color:var(--text);min-height:100vh;overflow-x:hidden}
+.page{display:none;padding:20px;animation:fadeIn .4s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 ::selection{background:var(--accent);color:#000}
 .header{background:rgba(8,8,15,0.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--purple),var(--accent),transparent);animation:headerGlow 4s ease infinite}
