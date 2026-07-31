@@ -2,7 +2,7 @@
 
 ابزار همه‌کاره Cloudflare Worker
 
-**🔗 استفاده آنلاین:** wizardcf.dpdns.org
+**🔗 استفاده آنلاین:** [wizardcf.dpdns.org](https://wizardcf.dpdns.org)
 
 ## ابزارها
 
@@ -20,6 +20,22 @@
 | 🔴 **EdgeTunnel** | ⭐ 41.4k | VLESS/Trojan/SS |
 | 🟢 **Nahan Panel** | 60+ | VLESS/Reality |
 | 🟣 **Cfnew** | ⭐ 14.6k | GrainTCP (کم پینگ) |
+
+## 🔒 امنیت
+
+- ✅ **توکن‌ها ذخیره نمیشوند** — فقط در حافظه مرورگر نگه داشته میشوند
+- ✅ **پاک کردن خودکار** — هنگام بستن صفحه، توکن‌ها پاک میشوند
+- ✅ **بدون localStorage** — هیچ اطلاعاتی در مرورگر ذخیره نمیشود
+- ✅ **بدون cookie** — جلسه کاری ردیابی نمیشود
+- ✅ **Security Headers** — محافظت در برابر XSS، Clickjacking و ...
+- ✅ **پردازش سمت سرور** — توکن‌ها فقط روی سرور Cloudflare پردازش میشوند
+
+### Security Headers
+- `X-Content-Type-Options: nosniff`
+- `X-Frame-Options: DENY`
+- `X-XSS-Protection: 1; mode=block`
+- `Referrer-Policy: no-referrer`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
 
 ## فناوری
 
