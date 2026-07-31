@@ -394,6 +394,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
 .toast.show{opacity:1;transform:translateX(-50%) translateY(-10px)}
 .floating{position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#0088cc,#0066aa);color:#fff;padding:12px 18px;border-radius:50px;text-decoration:none;font-size:12px;font-weight:600;box-shadow:0 4px 20px rgba(0,136,204,.4);z-index:50;display:flex;align-items:center;gap:8px;transition:all .2s}
 .floating:hover{transform:scale(1.05)}
+
 </style>
 </head>
 <body>
