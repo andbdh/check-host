@@ -408,11 +408,12 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <button class="close-btn" id="closeBtn">✕</button>
   </div>
   <div class="menu-section">ابزارها</div>
-  <div class="menu-item" id="nav-passgen" data-page="passgen">
+  <div class="menu-item active" id="nav-passgen" data-page="passgen">
     <div class="menu-icon">🔐</div>
     <div><div class="menu-label">Password Generator</div><div class="menu-desc">ساخت رمز ۳۲ کاراکتری قوی</div></div>
   </div>
-  
+  <div class="menu-item" id="nav-ipscan" data-page="ipscan">
+    <div class="menu-icon">🌍</div>
     <div><div class="menu-label">IP Scanner</div><div class="menu-desc">بررسی اطلاعات IP آنلاین</div></div>
   </div>
   <div class="menu-item" id="nav-cfscan" data-page="cfscan">
@@ -420,7 +421,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div><div class="menu-label">Cloudflare Scanner</div><div class="menu-desc">اسکن آیپی‌های Cloudflare</div></div>
   </div>
   <div class="menu-section">ابزارهای پیشرفته</div>
-  <div class="menu-item active" id="nav-wizard" data-page="wizard">
+  <div class="menu-item" id="nav-wizard" data-page="wizard">
     <div class="menu-icon">🧙</div>
     <div><div class="menu-label">Wizard</div><div class="menu-desc">نصب خودکار پنل‌ها</div></div>
   </div>
@@ -429,28 +430,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div class="menu-icon">📬</div>
     <div><div class="menu-label">تلگرام</div><div class="menu-desc">پشتیبانی و آپدیت</div></div>
   </a>
-  
-  <div class="menu-section">ابزارهای وب</div>
-  <div class="menu-item" id="nav-dns" data-page="dns">
-    <div class="menu-icon">🌐</div>
-    <div><div class="menu-label">DNS Lookup</div><div class="menu-desc">بررسی رکوردهای DNS</div></div>
-  </div>
-  <div class="menu-item" id="nav-json" data-page="json">
-    <div class="menu-icon">📝</div>
-    <div><div class="menu-label">JSON Formatter</div><div class="menu-desc">فرمت و تبدیل JSON</div></div>
-  </div>
-  <div class="menu-item" id="nav-base64" data-page="base64">
-    <div class="menu-icon">📋</div>
-    <div><div class="menu-label">Base64</div><div class="menu-desc">کدگذاری و کدگشایی</div></div>
-  </div>
-  <div class="menu-item" id="nav-sub" data-page="sub">
-    <div class="menu-icon">🔄</div>
-    <div><div class="menu-label">Subscription Converter</div><div class="menu-desc">تبدیل لینک اشتراک</div></div>
-  </div>
-  <div class="menu-item" id="nav-time" data-page="time">
-    <div class="menu-icon">⏰</div>
-    <div><div class="menu-label">Timestamp Converter</div><div class="menu-desc">تبدیل زمان و تاریخ</div></div>
-  </div>
   <div class="menu-footer">Made with ❤️ by Arshia</div>
 </div>
 <div class="header">
@@ -461,7 +440,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   </div>
 </div>
 
-<div class="page" id="page-passgen">
+<div class="page active" id="page-passgen">
   <div class="card">
     <div class="card-header">
       <div class="card-icon">🔐</div>
@@ -482,20 +461,39 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   </div>
 </div>
 
-<div class="page active" id="page-wizard">
+<div class="page" id="page-ipscan">
+  <div class="my-ip-box">
+    <div class="my-ip-label">آیپی شما</div>
+    <div class="my-ip" id="myIp">در حال دریافت...</div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🌍</div>
+      <div><div class="card-title">IP Scanner</div><div class="card-subtitle">بررسی اطلاعات هر آیپی</div></div>
+    </div>
+    <div class="scan-input">
+      <input type="text" id="ipInput" placeholder="مثلاً 8.8.8.8">
+      <button class="scan-btn" id="scanIpBtn">🔍 اسکن</button>
+    </div>
+    <div class="scan-result" id="scanResult" style="display:none">
+      <div class="scan-row"><div class="scan-label">IP</div><div class="scan-value" id="res-ip">-</div></div>
+      <div class="scan-row"><div class="scan-label">شهر</div><div class="scan-value" id="res-city">-</div></div>
+      <div class="scan-row"><div class="scan-label">استان</div><div class="scan-value" id="res-region">-</div></div>
+      <div class="scan-row"><div class="scan-label">کشور</div><div class="scan-value" id="res-country">-</div></div>
+      <div class="scan-row"><div class="scan-label">موقعیت</div><div class="scan-value" id="res-loc">-</div></div>
+      <div class="scan-row"><div class="scan-label">ISP</div><div class="scan-value" id="res-org">-</div></div>
+      <div class="scan-row"><div class="scan-label">منطقه زمانی</div><div class="scan-value" id="res-timezone">-</div></div>
+      <div class="scan-row"><div class="scan-label">کد پستی</div><div class="scan-value" id="res-postal">-</div></div>
+      <div class="scan-row"><div class="scan-label">هاست‌نم</div><div class="scan-value" id="res-hostname">-</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-wizard">
   <div class="card">
     <div class="card-header">
       <div class="card-icon">🧙</div>
       <div><div class="card-title">Wizard Panel Deployer</div><div class="card-subtitle">نصب خودکار پنل‌های VPN روی Cloudflare</div></div>
-    </div>
-        <div class="section-title">📖 راهنما</div>
-    <div style="background:rgba(0,229,195,0.05);border:1px solid rgba(0,229,195,0.1);border-radius:12px;padding:14px;margin-bottom:16px;font-size:12px;line-height:2">
-      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۱:</b> روی «🔑 ساخت توکن» بزنید</div>
-      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۲:</b> در Cloudflare یک توکن جدید بسازید</div>
-      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۳:</b> توکن را کپی کنید و در کادر بالا بزنید</div>
-      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۴:</b> پنل مورد نظر را انتخاب کنید</div>
-      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۵:</b> اسم ورکر را وارد کنید</div>
-      <div><b style="color:var(--accent)">مرحله ۶:</b> روی «نصب و فعال‌سازی» بزنید 🚀</div>
     </div>
     <div class="section-title">توکن Cloudflare API</div>
     <div class="scan-input" style="margin-bottom:12px">
@@ -583,79 +581,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
 </div>
 
 <a class="floating" href="https://t.me/Arshia_Kennedy" target="_blank" rel="noopener">📬 تلگرام</a>
-
-<div class="page" id="page-dns">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">🌐</div>
-      <div><div class="card-title">DNS Lookup</div><div class="card-subtitle">بررسی رکوردهای DNS هر دامنه</div></div>
-    </div>
-    <div class="scan-input"><input type="text" id="dnsInput" placeholder="دامنه (google.com)" style="direction:ltr;text-align:left"></div>
-    <button class="btn" id="dnsBtn">🔍 جستجو</button>
-    <div id="dnsResult" style="display:none;margin-top:16px"></div>
-  </div>
-</div>
-<div class="page" id="page-json">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">📝</div>
-      <div><div class="card-title">JSON Formatter</div><div class="card-subtitle">فرمت و تبدیل JSON</div></div>
-    </div>
-    <textarea id="jsonInput" class="input" rows="6" placeholder="JSON را اینجا بزنید..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical"></textarea>
-    <div style="display:flex;gap:8px;margin-top:12px">
-      <button class="btn" id="jsonPrettyBtn" style="flex:1">✨ فرمت</button>
-      <button class="btn" id="jsonMinBtn" style="flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text)">📦 فشرده</button>
-    </div>
-    <textarea id="jsonOutput" class="input" rows="6" readonly placeholder="نتیجه..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical;margin-top:12px"></textarea>
-  </div>
-</div>
-<div class="page" id="page-base64">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">📋</div>
-      <div><div class="card-title">Base64</div><div class="card-subtitle">کدگذاری و کدگشایی Base64</div></div>
-    </div>
-    <textarea id="b64Input" class="input" rows="4" placeholder="متن را اینجا بزنید..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical"></textarea>
-    <div style="display:flex;gap:8px;margin-top:12px">
-      <button class="btn" id="b64EncBtn" style="flex:1">🔒 کدگذاری</button>
-      <button class="btn" id="b64DecBtn" style="flex:1;background:var(--card2);border:1px solid var(--border);color:var(--text)">🔓 کدگشایی</button>
-    </div>
-    <textarea id="b64Output" class="input" rows="4" readonly placeholder="نتیجه..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical;margin-top:12px"></textarea>
-  </div>
-</div>
-<div class="page" id="page-sub">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">🔄</div>
-      <div><div class="card-title">Subscription Converter</div><div class="card-subtitle">تبدیل لینک اشتراک V2Ray/Clash</div></div>
-    </div>
-    <textarea id="subInput" class="input" rows="4" placeholder="لینک اشتراک را اینجا بزنید..." style="direction:ltr;text-align:left;font-family:monospace;font-size:12px;resize:vertical"></textarea>
-    <button class="btn" id="subBtn" style="margin-top:12px">🔄 تبدیل و نمایش سرورها</button>
-    <div id="subResult" style="display:none;margin-top:16px"></div>
-  </div>
-</div>
-<div class="page" id="page-time">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">⏰</div>
-      <div><div class="card-title">Timestamp Converter</div><div class="card-subtitle">تبدیل زمان unix به تاریخ و بالعکس</div></div>
-    </div>
-    <div style="margin-bottom:16px">
-      <div class="section-title">Unix Timestamp → تاریخ</div>
-      <div style="display:flex;gap:8px">
-        <input type="text" id="tsInput" class="input" placeholder="1700000000" style="direction:ltr;text-align:left;flex:1">
-        <button class="btn" id="tsBtn" style="width:auto;padding:0 20px">تبدیل</button>
-      </div>
-      <div id="tsResult1" style="margin-top:8px;font-size:13px;color:var(--accent)"></div>
-    </div>
-    <div>
-      <div class="section-title">تاریخ → Unix Timestamp</div>
-      <input type="datetime-local" id="dateInput" class="input" style="margin-bottom:8px">
-      <button class="btn" id="dateBtn">تبدیل</button>
-      <div id="tsResult2" style="margin-top:8px;font-size:13px;color:var(--accent)"></div>
-    </div>
-  </div>
-</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -670,60 +595,10 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     document.querySelectorAll('.menu-item[data-page]').forEach(function(m){m.classList.remove('active')});
     var el=$('page-'+page);if(el)el.classList.add('active');
     var nav=$('nav-'+page);if(nav)nav.classList.add('active');
-    
+    if(page==='ipscan')getMyIP();
     closeMenu();
   }
   function showToast(msg){var t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
-
-  async 
-  // DNS Lookup
-  function doDNSLookup(){
-    var domain=$('dnsInput').value.trim();
-    if(!domain){showToast('⚠️ دامنه را وارد کنید');return}
-    $('dnsResult').style.display='none';showToast('⏳ در حال جستجو...');
-    var types=['A','AAAA','MX','NS','TXT','CNAME'];var results=[];var done=0;
-    types.forEach(function(type){
-      fetch('https://dns.google/resolve?name='+domain+'&type='+type)
-      .then(function(r){return r.json()}).then(function(d){
-        if(d.Answer&&d.Answer.length>0)results.push({type:type,records:d.Answer});
-        done++;if(done===types.length)showDNSR(domain,results);
-      }).catch(function(){done++;if(done===types.length)showDNSR(domain,results)});
-    });
-  }
-  function showDNSR(domain,results){
-    if(results.length===0){$('dnsResult').innerHTML='<div style="text-align:center;color:var(--dim);padding:20px">رکوردی یافت نشد</div>';$('dnsResult').style.display='block';return}
-    var h='<div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--accent)">نتایج '+domain+'</div>';
-    results.forEach(function(r){
-      h+='<div style="margin-bottom:12px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:12px">';
-      h+='<div style="font-size:11px;font-weight:700;color:var(--success);margin-bottom:6px">'+r.type+'</div>';
-      r.records.forEach(function(rec){h+='<div style="font-size:12px;color:var(--text);direction:ltr;text-align:left;font-family:monospace;margin:4px 0">'+rec.data+'</div>'});
-      h+='</div>';
-    });$('dnsResult').innerHTML=h;$('dnsResult').style.display='block';showToast('✅ یافت شد');
-  }
-  // JSON
-  function doJsonPretty(){try{$('jsonOutput').value=JSON.stringify(JSON.parse($('jsonInput').value),null,2);showToast('✅ فرمت شد')}catch(e){showToast('❌ '+e.message)}}
-  function doJsonMinify(){try{$('jsonOutput').value=JSON.stringify(JSON.parse($('jsonInput').value));showToast('✅ فشرده شد')}catch(e){showToast('❌ '+e.message)}}
-  // Base64
-  function doB64Enc(){$('b64Output').value=btoa(unescape(encodeURIComponent($('b64Input').value)));showToast('✅ کدگذاری شد')}
-  function doB64Dec(){try{$('b64Output').value=decodeURIComponent(escape(atob($('b64Input').value)));showToast('✅ کدگشایی شد')}catch(e){showToast('❌ '+e.message)}}
-  // Sub
-  function doSubParse(){
-    var url=$('subInput').value.trim();if(!url){showToast('⚠️ لینک را وارد کنید');return}
-    showToast('⏳ در حال دریافت...');
-    fetch(url).then(function(r){return r.text()}).then(function(text){
-      var d=text;try{d=decodeURIComponent(escape(atob(text.trim())))}catch(e){}
-      var lines=d.split('\n').filter(function(l){return l.trim()});
-      var h='<div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--accent)">تعداد سرورها: '+lines.length+'</div>';
-      lines.forEach(function(l){var t=l.split('://')[0]||'?';
-        h+='<div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px">';
-        h+='<div style="font-size:11px;color:var(--success);font-weight:700">'+t.toUpperCase()+'</div>';
-        h+='<div style="font-size:11px;color:var(--dim);direction:ltr;text-align:left;font-family:monospace;margin-top:4px">'+l.substring(0,80)+'...</div></div>';
-      });$('subResult').innerHTML=h;$('subResult').style.display='block';showToast('✅ '+lines.length+' سرور');
-    }).catch(function(e){showToast('❌ '+e.message)});
-  }
-  // Time
-  function doTsToDate(){var ts=parseInt($('tsInput').value);if(isNaN(ts)){showToast('⚠️ عدد وارد کنید');return}if(ts<1e12)ts*=1000;$('tsResult1').textContent=new Date(ts).toLocaleString('fa-IR')+' | '+new Date(ts).toISOString();showToast('✅')}
-  function doDateToTs(){var v=$('dateInput').value;if(!v){showToast('⚠️ تاریخ را انتخاب کنید');return}$('tsResult2').textContent=Math.floor(new Date(v).getTime()/1000);showToast('✅')}
 
   async function generate(){
     try{
@@ -745,9 +620,24 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     }).catch(function(){showToast('❌ خطا در کپی')});
   }
 
-  
+  async function getMyIP(){
+    try{var r=await fetch('/api/my-ip');var d=await r.json();$('myIp').textContent=d.ip}
+    catch(e){$('myIp').textContent='خطا'}
+  }
 
-  
+  async function scanIP(){
+    var ip=$('ipInput').value.trim();
+    if(!ip){showToast('⚠️ آیپی رو وارد کنید');return}
+    $('scanResult').style.display='none';showToast('⏳ در حال اسکن...');
+    try{
+      var r=await fetch('https://ipwho.is/'+ip);var d=await r.json();
+      if(!d.success){showToast('❌ IP پیدا نشد');return}
+      $('res-ip').textContent=d.ip||'-';$('res-city').textContent=d.city||'-';$('res-region').textContent=d.region||'-';
+      $('res-country').textContent=d.country||'-';$('res-loc').textContent=d.latitude+','+d.longitude||'-';$('res-org').textContent=d.connection.org||'-';
+      $('res-timezone').textContent=d.timezone||'-';$('res-postal').textContent=d.postal||'-';$('res-hostname').textContent=d.connection.domain||'-';
+      $('scanResult').style.display='block';showToast('✅ اسکن کامل شد!');
+    }catch(e){showToast('❌ خطا در اسکن')}
+  }
 
   async function startCFScan(){
     if(scanning)return;scanning=true;
@@ -851,6 +741,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   $('menuOverlay').addEventListener('click', closeMenu);
   $('generateBtn').addEventListener('click', generate);
   $('copyBtn').addEventListener('click', copyPassword);
+  $('scanIpBtn').addEventListener('click', scanIP);
   $('cfScanBtn').addEventListener('click', startCFScan);
   $('validateBtn').addEventListener('click', validateToken);
   $('deployBtn').addEventListener('click', deployPanel);
@@ -865,15 +756,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   });
 
   generate();
-
-  $('dnsBtn').addEventListener('click', doDNSLookup);
-  $('jsonPrettyBtn').addEventListener('click', doJsonPretty);
-  $('jsonMinBtn').addEventListener('click', doJsonMinify);
-  $('b64EncBtn').addEventListener('click', doB64Enc);
-  $('b64DecBtn').addEventListener('click', doB64Dec);
-  $('subBtn').addEventListener('click', doSubParse);
-  $('tsBtn').addEventListener('click', doTsToDate);
-  $('dateBtn').addEventListener('click', doDateToTs);
   
   // Security: Clear sensitive data on page unload
   window.addEventListener('beforeunload', function(){
