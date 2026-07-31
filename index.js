@@ -408,7 +408,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <button class="close-btn" id="closeBtn">✕</button>
   </div>
   <div class="menu-section">ابزارها</div>
-  <div class="menu-item active" id="nav-passgen" data-page="passgen">
+  <div class="menu-item" id="nav-passgen" data-page="passgen">
     <div class="menu-icon">🔐</div>
     <div><div class="menu-label">Password Generator</div><div class="menu-desc">ساخت رمز ۳۲ کاراکتری قوی</div></div>
   </div>
@@ -421,7 +421,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div><div class="menu-label">Cloudflare Scanner</div><div class="menu-desc">اسکن آیپی‌های Cloudflare</div></div>
   </div>
   <div class="menu-section">ابزارهای پیشرفته</div>
-  <div class="menu-item" id="nav-wizard" data-page="wizard">
+  <div class="menu-item active" id="nav-wizard" data-page="wizard">
     <div class="menu-icon">🧙</div>
     <div><div class="menu-label">Wizard</div><div class="menu-desc">نصب خودکار پنل‌ها</div></div>
   </div>
@@ -440,7 +440,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   </div>
 </div>
 
-<div class="page active" id="page-passgen">
+<div class="page" id="page-passgen">
   <div class="card">
     <div class="card-header">
       <div class="card-icon">🔐</div>
@@ -489,11 +489,21 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   </div>
 </div>
 
-<div class="page" id="page-wizard">
+<div class="page active" id="page-wizard">
   <div class="card">
     <div class="card-header">
       <div class="card-icon">🧙</div>
       <div><div class="card-title">Wizard Panel Deployer</div><div class="card-subtitle">نصب خودکار پنل‌های VPN روی Cloudflare</div></div>
+    </div>
+        <div class="section-title">📖 راهنمای قدم به قدم</div>
+    <div style="background:rgba(0,229,195,0.05);border:1px solid rgba(0,229,195,0.1);border-radius:12px;padding:14px;margin-bottom:16px;font-size:12px;line-height:2.2">
+      <div><b style="color:var(--accent)">۱.</b> روی دکمه <b>🔑 ساخت توکن</b> بزنید</div>
+      <div><b style="color:var(--accent)">۲.</b> در صفحه Cloudflare یک <b>توکن جدید</b> بسازید</div>
+      <div><b style="color:var(--accent)">۳.</b> <b>مجوزها</b> را تیک بزنید: Workers, KV, D1, Pages, DNS</div>
+      <div><b style="color:var(--accent)">۴.</b> توکن را <b>کپی</b> کنید و در کادر زیر بزنید</div>
+      <div><b style="color:var(--accent)">۵.</b> پنل مورد نظر را <b>انتخاب</b> کنید</div>
+      <div><b style="color:var(--accent)">۶.</b> اسم دلخواه برای ورکر بنویسید</div>
+      <div><b style="color:var(--accent)">۷.</b> روی <b>نصب و فعال‌سازی</b> بزنید 🚀</div>
     </div>
     <div class="section-title">توکن Cloudflare API</div>
     <div class="scan-input" style="margin-bottom:12px">
