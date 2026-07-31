@@ -236,7 +236,7 @@ export default {
         const dSub = await rSub.json();
         const subdomain = dSub.result?.subdomain || accountId.substr(0, 8);
         
-        const panelURL = `https://${workerName}.${subdomain}.workers.dev`;
+        const panelURL = `https://${workerName}.${subdomain}.workers.dev` + (panelType==='nahan'?'/sync/dash':'');
         addLog('✅ Panel is live!');
         if(panelType==='edtunnel')addLog('🔑 رمز ادمین: '+(metadata.vars?.ADMIN||'نامشخص'));
         addLog('🔗 ' + panelURL);
