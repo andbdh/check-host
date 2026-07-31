@@ -495,6 +495,15 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <div class="card-icon">🧙</div>
       <div><div class="card-title">Wizard Panel Deployer</div><div class="card-subtitle">نصب خودکار پنل‌های VPN روی Cloudflare</div></div>
     </div>
+        <div class="section-title">📖 راهنما</div>
+    <div style="background:rgba(0,229,195,0.05);border:1px solid rgba(0,229,195,0.1);border-radius:12px;padding:14px;margin-bottom:16px;font-size:12px;line-height:2">
+      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۱:</b> روی «🔑 ساخت توکن» بزنید</div>
+      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۲:</b> در Cloudflare یک توکن جدید بسازید</div>
+      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۳:</b> توکن را کپی کنید و در کادر بالا بزنید</div>
+      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۴:</b> پنل مورد نظر را انتخاب کنید</div>
+      <div style="margin-bottom:8px"><b style="color:var(--accent)">مرحله ۵:</b> اسم ورکر را وارد کنید</div>
+      <div><b style="color:var(--accent)">مرحله ۶:</b> روی «نصب و فعال‌سازی» بزنید 🚀</div>
+    </div>
     <div class="section-title">توکن Cloudflare API</div>
     <div class="scan-input" style="margin-bottom:12px">
       <input type="password" id="cfToken" placeholder="API Token را وارد کنید" style="font-size:12px">
