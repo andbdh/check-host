@@ -621,7 +621,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   }
 
   async function getMyIP(){
-    try{var r=await fetch('/api/my-ip');var d=await r.json();$('myIp').textContent=d.query}
+    try{var r=await fetch('/api/my-ip');var d=await r.json();$('myIp').textContent=d.ip}
     catch(e){$('myIp').textContent='خطا'}
   }
 
@@ -630,11 +630,11 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     if(!ip){showToast('⚠️ آیپی رو وارد کنید');return}
     $('scanResult').style.display='none';showToast('⏳ در حال اسکن...');
     try{
-      var r=await fetch('http://ip-api.com/json/'+ip+'?fields=66846719');var d=await r.json();
-      if(d.status==='fail'){showToast('❌ IP پیدا نشد');return}
-      $('res-ip').textContent=d.query||'-';$('res-city').textContent=d.city||'-';$('res-region').textContent=d.regionName||'-';
-      $('res-country').textContent=d.country||'-';$('res-loc').textContent=(d.lat||'')+','+(d.lon||'')||'-';$('res-org').textContent=d.isp||'-';
-      $('res-timezone').textContent=d.timezone||'-';$('res-postal').textContent=d.zip||'-';$('res-hostname').textContent=d.reverse||'-';
+      var r=await fetch('https://ipwho.is/'+ip);var d=await r.json();
+      if(!d.success){showToast('❌ IP پیدا نشد');return}
+      $('res-ip').textContent=d.ip||'-';$('res-city').textContent=d.city||'-';$('res-region').textContent=d.region||'-';
+      $('res-country').textContent=d.country||'-';$('res-loc').textContent=d.latitude+','+d.longitude||'-';$('res-org').textContent=d.connection.org||'-';
+      $('res-timezone').textContent=d.timezone||'-';$('res-postal').textContent=d.postal||'-';$('res-hostname').textContent=d.connection.domain||'-';
       $('scanResult').style.display='block';showToast('✅ اسکن کامل شد!');
     }catch(e){showToast('❌ خطا در اسکن')}
   }
