@@ -508,6 +508,20 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <div><b style="color:var(--accent)">۶.</b> اسم دلخواه برای ورکر بنویسید</div>
       <div><b style="color:var(--accent)">۷.</b> روی <b>نصب و فعال‌سازی</b> بزنید 🚀</div>
     </div>
+        <div class="section-title" style="color:var(--danger);margin-top:16px">🔴 راهنمای EdgeTunnel</div>
+    <div style="background:rgba(244,63,94,0.05);border:1px solid rgba(244,63,94,0.15);border-radius:12px;padding:14px;margin-bottom:16px;font-size:12px;line-height:2.2">
+      <div><b style="color:var(--danger)">۱.</b> اول از منو <b>Wizard</b> رو باز کنید</div>
+      <div><b style="color:var(--danger)">۲.</b> توکن Cloudflare رو وارد کنید</div>
+      <div><b style="color:var(--danger)">۳.</b> پنل <b>EdgeTunnel</b> رو انتخاب کنید</div>
+      <div><b style="color:var(--danger)">۴.</b> اسم ورکر رو بنویسید (مثلاً my-edge)</div>
+      <div><b style="color:var(--danger)">۵.</b> روی <b>نصب</b> بزنید</div>
+      <div><b style="color:var(--danger)">۶.</b> لینک پنل رو کپی کنید</div>
+      <div><b style="color:var(--danger)">۷.</b> <b>⚠️ مهم:</b> رمز ادمین رو از لاگ کپی کنید</div>
+      <div><b style="color:var(--danger)">۸.</b> وارد پنل بشید و رمز رو بزنید</div>
+      <div style="margin-top:8px;padding:8px;background:rgba(244,63,94,0.1);border-radius:8px;font-size:11px">
+        💡 <b>نکته:</b> اگه رمز ادمین کار نکرد، از منو برید به <b>Settings > Variables</b> و متغیر <b>ADMIN</b> رو با رمز دلخواه ست کنید
+      </div>
+    </div>
     <div class="section-title">توکن Cloudflare API</div>
     <div class="scan-input" style="margin-bottom:12px">
       <input type="password" id="cfToken" placeholder="API Token را وارد کنید" style="font-size:12px">
