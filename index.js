@@ -568,7 +568,9 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
             <div style="width:40px;height:40px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px">🟣</div>
             <div><div style="font-weight:700;font-size:14px">Cfnew Panel</div><div style="font-size:11px;color:var(--dim)">⭐ 14.6k - GrainTCP (کم پینگ)</div></div>
           </div>
-      <div class="cf-item" style="cursor:pointer" id="panel-nova" data-panel="nova">
+          <div class="cf-status" style="background:rgba(108,92,231,.15);color:#a29bfe">کم پینگ</div>
+        </div>
+        <div class="cf-item" style="cursor:pointer" id="panel-nova" data-panel="nova">
         <div style="display:flex;align-items:center;gap:12px">
           <div class="panel-icon" style="background:linear-gradient(135deg,#f59e0b,#f97316);font-size:18px">🦊</div>
           <div><div style="font-weight:700">Nova Proxy</div><div style="font-size:11px;color:var(--dim)">⭐ 3.1k - Trojan/Warp/Proxy</div></div>
