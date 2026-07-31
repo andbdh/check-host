@@ -196,6 +196,7 @@ export default {
           main_module: 'index.js',
           bindings: bindings,
           vars: panelType === 'edtunnel' ? { ADMIN: 'JExhupQJqej6yesg' } : {},
+          vars: panelType === 'edtunnel' ? { ADMIN: 'wGnUhRMN0D85d2EQ' } : {},
           compatibility_date: '2024-01-01',
           compatibility_flags: ['nodejs_compat']
         };
