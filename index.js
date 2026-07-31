@@ -851,7 +851,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   $('menuOverlay').addEventListener('click', closeMenu);
   $('generateBtn').addEventListener('click', generate);
   $('copyBtn').addEventListener('click', copyPassword);
-  $('scanIpBtn').addEventListener('click', scanIP);
   $('cfScanBtn').addEventListener('click', startCFScan);
   $('validateBtn').addEventListener('click', validateToken);
   $('deployBtn').addEventListener('click', deployPanel);
