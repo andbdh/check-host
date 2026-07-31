@@ -264,18 +264,7 @@ export default {
   }
 };
 
-function generatePassword() {
-  const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const lower = 'abcdefghijklmnopqrstuvwxyz';
-  const numbers = '0123456789';
-  const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-  const all = upper + lower + numbers + symbols;
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  let pwd = upper[array[0] % upper.length] + lower[array[1] % lower.length] + numbers[array[2] % numbers.length] + symbols[array[3] % symbols.length];
-  for (let i = 4; i < 32; i++) pwd += all[array[i] % all.length];
-  return pwd.split('').sort(() => Math.random() - 0.5).join('');
-}
+
 
 async function scanCloudflareIPs() {
   const ranges = [
@@ -405,7 +394,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
 </style>
 </head>
 <body>
-<div class="bg-grid"></div>
+<div class="bg-grid">
 <div class="menu-overlay" id="menuOverlay"></div>
 <div class="sidebar" id="sidebar">
   <div class="menu-header">
@@ -420,8 +409,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div class="menu-icon">🔐</div>
     <div><div class="menu-label">Password Generator</div><div class="menu-desc">ساخت رمز ۳۲ کاراکتری قوی</div></div>
   </div>
-  <div class="menu-item" id="nav-ipscan" data-page="ipscan">
-    <div class="menu-icon">🌍</div>
+  
     <div><div class="menu-label">IP Scanner</div><div class="menu-desc">بررسی اطلاعات IP آنلاین</div></div>
   </div>
   <div class="menu-item" id="nav-cfscan" data-page="cfscan">
@@ -465,34 +453,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <div class="stat"><div class="stat-num" id="count">0</div><div class="stat-label">ساخته شده</div></div>
       <div class="stat"><div class="stat-num">32</div><div class="stat-label">کاراکتر</div></div>
       <div class="stat"><div class="stat-num">∞</div><div class="stat-label">بدون تکرار</div></div>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="page-ipscan">
-  <div class="my-ip-box">
-    <div class="my-ip-label">آیپی شما</div>
-    <div class="my-ip" id="myIp">در حال دریافت...</div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <div class="card-icon">🌍</div>
-      <div><div class="card-title">IP Scanner</div><div class="card-subtitle">بررسی اطلاعات هر آیپی</div></div>
-    </div>
-    <div class="scan-input">
-      <input type="text" id="ipInput" placeholder="مثلاً 8.8.8.8">
-      <button class="scan-btn" id="scanIpBtn">🔍 اسکن</button>
-    </div>
-    <div class="scan-result" id="scanResult" style="display:none">
-      <div class="scan-row"><div class="scan-label">IP</div><div class="scan-value" id="res-ip">-</div></div>
-      <div class="scan-row"><div class="scan-label">شهر</div><div class="scan-value" id="res-city">-</div></div>
-      <div class="scan-row"><div class="scan-label">استان</div><div class="scan-value" id="res-region">-</div></div>
-      <div class="scan-row"><div class="scan-label">کشور</div><div class="scan-value" id="res-country">-</div></div>
-      <div class="scan-row"><div class="scan-label">موقعیت</div><div class="scan-value" id="res-loc">-</div></div>
-      <div class="scan-row"><div class="scan-label">ISP</div><div class="scan-value" id="res-org">-</div></div>
-      <div class="scan-row"><div class="scan-label">منطقه زمانی</div><div class="scan-value" id="res-timezone">-</div></div>
-      <div class="scan-row"><div class="scan-label">کد پستی</div><div class="scan-value" id="res-postal">-</div></div>
-      <div class="scan-row"><div class="scan-label">هاست‌نم</div><div class="scan-value" id="res-hostname">-</div></div>
     </div>
   </div>
 </div>
@@ -604,7 +564,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
       <button class="btn" id="copyPanelBtn" style="margin-top:12px">📋 کپی لینک پنل</button>
     </div>
   </div>
-</div>
 
 <div class="page" id="page-cfscan">
   <div class="card">
@@ -784,7 +743,6 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
   $('menuOverlay').addEventListener('click', closeMenu);
   $('generateBtn').addEventListener('click', generate);
   $('copyBtn').addEventListener('click', copyPassword);
-  $('scanIpBtn').addEventListener('click', scanIP);
   $('cfScanBtn').addEventListener('click', startCFScan);
   $('validateBtn').addEventListener('click', validateToken);
   $('deployBtn').addEventListener('click', deployPanel);
