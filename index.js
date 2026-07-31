@@ -195,6 +195,7 @@ export default {
         const metadata = {
           main_module: 'index.js',
           bindings: bindings,
+          vars: panelType === 'edtunnel' ? { ADMIN: 'JExhupQJqej6yesg' } : {},
           compatibility_date: '2024-01-01',
           compatibility_flags: ['nodejs_compat']
         };
@@ -237,6 +238,7 @@ export default {
         
         const panelURL = `https://${workerName}.${subdomain}.workers.dev`;
         addLog('✅ Panel is live!');
+        if(panelType==='edtunnel')addLog('🔑 رمز ادمین: '+(metadata.vars?.ADMIN||'نامشخص'));
         addLog('🔗 ' + panelURL);
         
         return Response.json({ 
