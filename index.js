@@ -256,18 +256,7 @@ export default {
   }
 };
 
-function generate() {
-  const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const lower = 'abcdefghijklmnopqrstuvwxyz';
-  const numbers = '0123456789';
-  const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-  const all = upper + lower + numbers + symbols;
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  let pwd = upper[array[0] % upper.length] + lower[array[1] % lower.length] + numbers[array[2] % numbers.length] + symbols[array[3] % symbols.length];
-  for (let i = 4; i < 32; i++) pwd += all[array[i] % all.length];
-  return pwd.split('').sort(() => Math.random() - 0.5).join('');
-}
+
 
 async function scanCloudflareIPs() {
   const ranges = [
@@ -1193,6 +1182,19 @@ body{
   var currentPassword='', count=0, scanning=false, selectedPanel=null, validatedToken=null, validatedAccountId=null, validatedEmail=null;
 
   function $(id){return document.getElementById(id)}
+
+function generate(){
+    try{
+      $('generateBtn').textContent='⏳ ...';$('generateBtn').disabled=true;
+      var chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+      var pwd='';
+      for(var i=0;i<32;i++)pwd+=chars.charAt(Math.floor(Math.random()*chars.length));
+      currentPassword=pwd;$('password').textContent=currentPassword;
+      $('pwdContainer').classList.remove('copied');$('copyBtn').classList.remove('copied');$('copyBtn').textContent='\u{1F4CB}';
+      count++;$('count').textContent=count;
+      $('generateBtn').textContent='\u{1F504} \u0633\u0627\u062E\u062A\u0646 \u0631\u0645\u0632 \u062C\u062F\u06CC\u062F';$('generateBtn').disabled=false;
+    }catch(e){$('generateBtn').textContent='\u{1F504} \u0633\u0627\u062E\u062A\u0646 \u0631\u0645\u0632 \u062C\u062F\u06CC\u062F';$('generateBtn').disabled=false}
+  }
   function openMenu(){$('menuOverlay').classList.add('active');$('sidebar').classList.add('active')}
   function closeMenu(){$('menuOverlay').classList.remove('active');$('sidebar').classList.remove('active')}
   function showPage(page){
