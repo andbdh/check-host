@@ -570,7 +570,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);backg
   }
   function showToast(msg){var t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
 
-  async function generate(){
+  async async function generate(){
     try{
       $('generateBtn').textContent='⏳ ...';$('generateBtn').disabled=true;
       var r=await fetch('/api/generate');var d=await r.json();
