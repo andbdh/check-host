@@ -333,6 +333,8 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     if(!selectedPanel){showToast('⚠️ پنل را انتخاب کنید');return}
     var workerName=$('workerName').value.trim();
     if(!workerName){showToast('⚠️ اسم ورکر را وارد کنید');return}
+    workerName=workerName.toLowerCase().replace(/[^a-z0-9-]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+    $('workerName').value=workerName;
     this.textContent='⏳ در حال نصب...';this.disabled=true;
     $('resultCard').style.display='block';
     $('deployLog').innerHTML='';
