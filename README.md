@@ -3,31 +3,48 @@
 A powerful Cloudflare Worker tool with 4 features:
 
 - 🔑 **Password Generator** - Strong 32-char passwords, never repeated
-- 🌍 **IP Scanner** - Check IP information and network details  
-- ☁️ **Cloudflare Scanner** - Find the best Cloudflare IPs for connections
-- 🧙 **Wizard** - Auto-install VPN panels on Cloudflare Workers
-
-## Supported Panels
-
-| Panel | Stars | Feature |
-|-------|-------|---------|
-| 🔴 EdgeTunnel | 41.4k | VLESS/Trojan/SS |
-| 🟢 Nahan Panel | 60+ | VLESS/Reality |
-| 🟣 Cfnew | 14.6k | GrainTCP (Low Ping) |
-
-## Deploy
-
-1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com)
-2. Workers & Pages → Create Worker
-3. Paste the code from `index.js`
-4. Deploy!
+- 🌍 **IP Scanner** - Check IP information and network details
+- ☁️ **Cloudflare Scanner** - Scan Cloudflare IP ranges for latency
+- 🧙 **Wizard** - Auto-deploy VPN panels (EdgeTunnel, Nahan, Cfnew)
 
 ## Features
 
-- 🌙 Dark theme with glassmorphism UI
-- 📱 Mobile-friendly RTL design
-- 🔐 API Token & Global Key support
-- 🚀 One-click panel installation
+### 🔑 Password Generator
+- 32-character strong passwords
+- Uses `Math.random()` for generation
+- Copy to clipboard with one tap
+- Track password count
+
+### 🌍 IP Scanner
+- IP geolocation
+- ISP information
+- City/Country details
+- ASN lookup
+
+### ☁️ Cloudflare Scanner
+- Scans 19 Cloudflare IP ranges
+- Shows ping latency
+- Color-coded results
+
+### 🧙 Wizard Panel Deployer
+- **EdgeTunnel** (41.4k ⭐) - VLESS/Trojan/SS
+- **Nahan Panel** - VLESS/Reality
+- **Cfnew** (14.6k ⭐) - GrainTCP (lowest ping)
+
+Supports both API Token and Global API Key.
+
+## Deployment
+
+1. Create a Cloudflare Worker
+2. Copy the contents of `index.js`
+3. Deploy!
+
+## Tech Stack
+
+- Cloudflare Workers
+- ES Modules
+- Vanilla JavaScript
+- RTL Persian/Farsi UI
 
 ## License
 
