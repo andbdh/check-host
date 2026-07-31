@@ -144,6 +144,11 @@ export default {
             workerSource = await r.text();
             addLog('✅ Cfnew source: ' + workerSource.length + ' bytes');
           }
+          else if (panelType === 'nova') {
+            const r = await fetch('https://raw.githubusercontent.com/IRNova/Nova-Proxy/main/worker.js');
+            workerSource = await r.text();
+            addLog('✅ Nova Proxy source: ' + workerSource.length + ' bytes');
+          }
         } catch (e) {
           addLog('❌ Download failed: ' + e.message);
           return Response.json({ success: false, logs, error: 'Download failed' }, { headers: cors });
@@ -186,7 +191,7 @@ export default {
         // Build bindings
         let bindings = [];
         if (kvId) bindings.push({ type: 'kv_namespace', name: 'KV', namespace_id: kvId });
-        if (d1Id) bindings.push({ type: 'd1', name: 'IOT_DB', database_id: d1Id });
+        if (d1Id) bindings.push({ type: 'd1', name: panelType === 'nova' ? 'DB' : 'IOT_DB', database_id: d1Id });
         
         // For Cfnew, the binding name should be 'u' with UUID value in KV
         // Actually Cfnew reads from KV variable 'u' - we already wrote the UUID above
@@ -195,7 +200,7 @@ export default {
         const metadata = {
           main_module: 'index.js',
           bindings: bindings,
-          vars: panelType === 'edtunnel' ? { ADMIN: 'JExhupQJqej6yesg' } : {},
+          vars: panelType === 'edtunnel' ? { ADMIN: 'ylfQxtp7SZ36MZCf' } : panelType === 'nova' ? { PAGES_URL: 'https://nova-panel.github.io' } : {},
           vars: panelType === 'edtunnel' ? { ADMIN: 'wGnUhRMN0D85d2EQ' } : {},
           compatibility_date: '2024-01-01',
           compatibility_flags: ['nodejs_compat']
@@ -563,6 +568,15 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
             <div style="width:40px;height:40px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px">🟣</div>
             <div><div style="font-weight:700;font-size:14px">Cfnew Panel</div><div style="font-size:11px;color:var(--dim)">⭐ 14.6k - GrainTCP (کم پینگ)</div></div>
           </div>
+      <div class="cf-item" style="cursor:pointer" id="panel-nova" data-panel="nova">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="panel-icon" style="background:linear-gradient(135deg,#f59e0b,#f97316);font-size:18px">🦊</div>
+          <div><div style="font-weight:700">Nova Proxy</div><div style="font-size:11px;color:var(--dim)">⭐ 3.1k - Trojan/Warp/Proxy</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="cf-status">تازه</div>
+        </div>
+      </div>
           <div class="cf-status" style="background:rgba(108,92,231,.15);color:var(--accent)">کم پینگ</div>
         </div>
       </div>
