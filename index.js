@@ -103,7 +103,7 @@ export default {
 
         let adminPass = '';
         if (panelType === 'edtunnel') {
-          adminPass = Array.from({length:16}, () => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'[Math.floor(Math.random()*62)]).join('');
+          adminPass = 'admin';
         }
 
         const metadata = {
