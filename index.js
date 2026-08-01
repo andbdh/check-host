@@ -109,7 +109,7 @@ export default {
         const metadata = {
           main_module: 'index.js',
           bindings: bindings,
-          vars: panelType === 'edtunnel' ? { ADMIN: adminPass } : panelType === 'nova' ? { PAGES_URL: 'https://nova-panel.github.io' } : {},
+          vars: panelType === 'edtunnel' ? { ADMIN: adminPass } : panelType === 'nova' ? { ADMIN: 'admin', PAGES_URL: 'https://nova-panel.github.io' } : {},
           compatibility_date: '2024-01-01',
           compatibility_flags: ['nodejs_compat']
         };
