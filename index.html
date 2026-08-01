@@ -64,6 +64,9 @@ a{text-decoration:none;color:inherit}
 .f-btn{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:5px 12px;border-radius:9px;font:12px 'Vazirmatn',sans-serif;cursor:pointer;transition:.2s}
 .f-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 .empty{text-align:center;padding:40px;color:var(--dim)}
+.f-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.f-btn{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:5px 12px;border-radius:9px;font:12px 'Vazirmatn',sans-serif;cursor:pointer;transition:.2s}
+.f-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 18px;font-size:12px;z-index:200;opacity:0;transition:.3s}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 </style>
@@ -209,12 +212,59 @@ window.detail=function(id){
   if(s.type)h+='<span>'+(s.type==='series'?'📺 سریال':'🎬 فیلم')+'</span>';
   h+='</div>';
   if(s.description)h+='<div class="det-desc">'+s.description+'</div>';
-  if(s.source_url)h+='<a href="'+s.source_url+'" target="_blank" class="hero-btn" style="margin-bottom:16px">🔗 مشاهده در سایت اصلی</a>';
+  if(s.source_url){
+    h+='<button class="hero-btn" onclick="startStream('+s.id+')" style="margin-bottom:16px">▶ پخش آنلاین</button>';
+    h+='<div id="player-area" style="display:none;margin-bottom:16px">';
+    h+='<div id="player-loading" style="text-align:center;padding:20px;color:var(--dim)">⏳ در حال بارگذاری لینک‌ها...</div>';
+    h+='<div id="player-list"></div>';
+    h+='<video id="videoPlayer" controls style="width:100%;border-radius:14px;display:none"></video>';
+    h+='</div>';
+    h+='<a href="'+s.source_url+'" target="_blank" class="hero-btn" style="margin-bottom:16px;background:var(--card2);border:1px solid var(--border)">🔗 مشاهده در سایت اصلی</a>';
+  }
   d.innerHTML=h;
   $('main').scrollTop=0;
 };
 
+
+window.startStream=function(id){
+  var s=all.find(function(x){return x.id===id});
+  if(!s||!s.source_url)return;
+  var pa=$('player-area');pa.style.display='block';
+  var pl=$('player-loading');pl.style.display='block';
+  $('player-list').innerHTML='';
+  var video=$('videoPlayer');video.style.display='none';video.src='';
+  fetch(API+'/api/stream?url='+encodeURIComponent(s.source_url)).then(function(r){return r.json()}).then(function(d){
+    pl.style.display='none';
+    if(d.success&&d.data.length){
+      var btns='';
+      for(var i=0;i<d.data.length;i++){
+        var l=d.data[i];
+        var short=l.label.substring(0,35);
+        btns+='<button class="f-btn" data-url="'+l.url+'" onclick="playFromBtn(this)">'+short+'</button>';
+      }
+      $('player-list').innerHTML='<div class="f-row">'+btns+'</div>';
+    }else{
+      $('player-list').innerHTML='<div style="color:var(--dim);font-size:12px;text-align:center">لینک پخش یافت نشد</div>';
+    }
+  }).catch(function(){
+    pl.innerHTML='<div style="color:var(--red);font-size:12px;text-align:center">خطا در بارگذاری</div>';
+  });
+};
+
+window.playFromBtn=function(btn){
+  var url=btn.getAttribute('data-url');
+  var video=$('videoPlayer');
+  video.src=url;
+  video.style.display='block';
+  video.play();
+  document.querySelectorAll('#player-list .f-btn').forEach(function(b){
+    b.style.background='var(--card2)';b.style.color='var(--text)';
+  });
+  btn.style.background='var(--accent)';btn.style.color='#fff';
+};
+
 window.goHome=function(){$('home').style.display='block';$('det').style.display='none';$('main').scrollTop=0};
+
 
 load();startHero();
 })();
