@@ -149,7 +149,8 @@ export default {
           addLog('✅ KV variable "u" set: ' + uuid);
         }
 
-        const panelURL = `https://${workerName}.${subdomain}.workers.dev` + (panelType === 'nahan' ? '/sync/dash' : '');
+        const paths = { nahan: '/sync/dash', edtunnel: '/admin', nova: '/admin', cfnew: '/uuid' };
+          const panelURL = `https://${workerName}.${subdomain}.workers.dev` + (paths[panelType] || '');
         addLog('✅ Panel is live!');
         if (panelType === 'edtunnel' && adminPass) addLog('🔑 Admin password: ' + adminPass);
         addLog('🔗 ' + panelURL);
