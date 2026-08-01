@@ -140,17 +140,21 @@ export default {
         const subdomain = dSub.result?.subdomain || accountId.substr(0, 8);
 
         // Cfnew UUID
+        let cfnewUUID = null;
         if (panelType === 'cfnew' && kvId) {
           addLog('🔑 Generating Cfnew UUID...');
-          const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { const r = Math.random()*16|0; return (c==='x'?r:(r&0x3|0x8)).toString(16); });
+          cfnewUUID = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { const r = Math.random()*16|0; return (c==='x'?r:(r&0x3|0x8)).toString(16); });
           await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/kv/namespaces/${kvId}/values/u`, {
-            method: 'PUT', headers: authH('text/plain'), body: uuid
+            method: 'PUT', headers: authH('text/plain'), body: cfnewUUID
           });
-          addLog('✅ KV variable "u" set: ' + uuid);
+          addLog('✅ KV variable "u" set: ' + cfnewUUID);
         }
 
-        const paths = { nahan: '/sync/dash', edtunnel: '/admin', nova: '/admin', cfnew: '/uuid' };
-          const panelURL = `https://${workerName}.${subdomain}.workers.dev` + (paths[panelType] || '');
+        let panelURL = `https://${workerName}.${subdomain}.workers.dev`;
+          if (panelType === 'nahan') panelURL += '/sync/dash';
+          else if (panelType === 'edtunnel') panelURL += '/admin';
+          else if (panelType === 'nova') panelURL += '/admin';
+          else if (panelType === 'cfnew' && cfnewUUID) panelURL += '/' + cfnewUUID;
         addLog('✅ Panel is live!');
         if (panelType === 'edtunnel' && adminPass) addLog('🔑 Admin password: ' + adminPass);
         addLog('🔗 ' + panelURL);
