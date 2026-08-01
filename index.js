@@ -235,7 +235,7 @@ body{font-family:'Inter','Segoe UI',Tahoma,sans-serif;background:var(--bg);color
     <div><b>۶.</b> اسم دلخواه برای ورکر بنویسید</div>
     <div><b>۷.</b> روی «نصب و فعال‌سازی» بزنید 🚀</div>
   </div>
-  <a class="help-link" href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">🔑 ساخت توکن</a>
+  <a class="help-link" href="https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=%5B%7B%22key%22%3A%22workers_scripts%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22workers_kv_storage%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22d1%22%2C%22type%22%3A%22edit%22%7D%2C%7B%22key%22%3A%22user_details%22%2C%22type%22%3A%22read%22%7D%5D&accountId=*&zoneId=all&name=WizardCF-Installer" target="_blank">🔑 ساخت توکن</a>
 </div>
 
 <div class="card">
