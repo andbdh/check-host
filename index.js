@@ -144,9 +144,9 @@ export default {
           addLog('🔑 Generating Cfnew UUID...');
           const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => { const r = Math.random()*16|0; return (c==='x'?r:(r&0x3|0x8)).toString(16); });
           await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/kv/namespaces/${kvId}/values/u`, {
-            method: 'PUT', headers: authH('text/plain'), body: btoa(uuid)
+            method: 'PUT', headers: authH('text/plain'), body: uuid
           });
-          addLog('✅ KV variable "u" set with UUID');
+          addLog('✅ KV variable "u" set: ' + uuid);
         }
 
         const panelURL = `https://${workerName}.${subdomain}.workers.dev` + (panelType === 'nahan' ? '/sync/dash' : '');
