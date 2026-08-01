@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>فیلیمو</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b0e1a;--card:#14172a;--card2:#1c2040;--accent:#2979FF;--accent2:#448AFF;--gold:#FFD740;--red:#FF5252;--green:#69F0AE;--text:#fff;--dim:#5c6388;--border:#252a4a}
+body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.header{position:sticky;top:0;z-index:100;background:rgba(11,14,26,.95);backdrop-filter:blur(20px);padding:10px 16px}
+.tabs{display:flex;gap:0;justify-content:center;margin-bottom:8px}
+.tab{padding:8px 20px;font-size:14px;font-weight:600;color:var(--dim);cursor:pointer;position:relative;transition:.2s}
+.tab.on{color:var(--text)}
+.tab.on::after{content:'';position:absolute;bottom:0;left:25%;right:25%;height:3px;background:var(--accent);border-radius:2px}
+.search{position:relative;margin:0 0 8px}
+.search input{width:100%;background:var(--card2);border:1px solid var(--border);color:var(--text);padding:11px 16px 11px 40px;border-radius:12px;font:14px/1.4 'Vazirmatn',sans-serif;outline:none;transition:.2s}
+.search input:focus{border-color:var(--accent)}
+.search input::placeholder{color:var(--dim)}
+.search i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:16px;font-style:normal}
+.main{padding:0 0 80px}
+.hero{margin:8px 16px 16px;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:16/9;background:var(--card)}
+.hero img{width:100%;height:100%;object-fit:cover}
+.hero-info{position:absolute;bottom:0;left:0;right:0;padding:20px 16px;background:linear-gradient(transparent,rgba(0,0,0,.92))}
+.hero-title{font-size:20px;font-weight:900;margin-bottom:4px}
+.hero-sub{font-size:12px;color:var(--dim);margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hero-btn{background:var(--accent);color:#fff;border:none;padding:9px 22px;border-radius:10px;font:700 13px 'Vazirmatn',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.dots{display:flex;justify-content:center;gap:5px;padding:10px 0}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--dim);transition:.2s}
+.dot.on{background:var(--accent);width:18px;border-radius:4px}
+.sec{margin-bottom:20px}
+.sec-h{display:flex;align-items:center;justify-content:space-between;padding:0 16px;margin-bottom:10px}
+.sec-t{font-size:15px;font-weight:700}
+.row{display:flex;gap:10px;overflow-x:auto;padding:0 16px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.card{min-width:125px;max-width:125px;scroll-snap-align:start;cursor:pointer;transition:transform .2s}
+.card:active{transform:scale(.97)}
+.card-img{width:100%;aspect-ratio:2/3;border-radius:14px;overflow:hidden;position:relative;background:var(--card2)}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-tag{position:absolute;top:6px;right:6px;background:var(--accent);color:#fff;font-size:9px;padding:2px 7px;border-radius:5px;font-weight:700}
+.card-year{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.7);color:var(--gold);font-size:10px;padding:2px 7px;border-radius:5px;font-weight:700;backdrop-filter:blur(4px)}
+.card-name{font-size:11px;font-weight:500;margin-top:6px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;margin-bottom:16px}
+.cat-card{padding:18px 14px;border-radius:14px;cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;transition:transform .2s}
+.cat-card:active{transform:scale(.97)}
+.c1{background:linear-gradient(135deg,#1a237e,#283593)}.c2{background:linear-gradient(135deg,#b71c1c,#c62828)}.c3{background:linear-gradient(135deg,#1b5e20,#2e7d32)}.c4{background:linear-gradient(135deg,#e65100,#ef6c00)}.c5{background:linear-gradient(135deg,#4a148c,#6a1b9a)}.c6{background:linear-gradient(135deg,#006064,#00838f)}
+.btm{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(transparent,var(--bg) 25%);padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:100}
+.btm-in{display:flex;align-items:center;justify-content:space-around;max-width:460px;margin:0 auto}
+.nav{display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer;color:var(--dim);font-size:9px;padding:4px 10px;transition:.2s}
+.nav.on{color:var(--text)}
+.nav .ic{font-size:20px}
+.nav.mid{background:var(--accent);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;margin-top:-18px;box-shadow:0 4px 16px rgba(41,121,255,.4)}
+.detail{display:none;padding:16px;padding-bottom:90px}
+.det-back{width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;margin-bottom:14px}
+.det-back img{width:100%;height:100%;object-fit:cover}
+.det-title{font-size:20px;font-weight:900;margin-bottom:4px}
+.det-meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.det-meta span{background:var(--card2);padding:4px 10px;border-radius:7px;font-size:11px;color:var(--dim)}
+.det-desc{font-size:13px;line-height:2;color:var(--dim);margin:8px 0 16px}
+.back{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:7px 14px;border-radius:9px;font:13px 'Vazirmatn',sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin-bottom:14px}
+.f-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.f-btn{background:var(--card2);border:1px solid var(--border);color:var(--text);padding:5px 12px;border-radius:9px;font:12px 'Vazirmatn',sans-serif;cursor:pointer;transition:.2s}
+.f-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.empty{text-align:center;padding:40px;color:var(--dim)}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 18px;font-size:12px;z-index:200;opacity:0;transition:.3s}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="tabs">
+    <div class="tab on" onclick="switchTab('all')">همه</div>
+    <div class="tab" onclick="switchTab('movie')">فیلم</div>
+    <div class="tab" onclick="switchTab('series')">سریال</div>
+  </div>
+  <div class="search">
+    <i>🔍</i>
+    <input type="text" id="q" placeholder="نام فیلم یا سریال">
+  </div>
+</div>
+
+<div class="main" id="main">
+  <div id="home">
+    <div class="hero" id="hero"></div>
+    <div class="dots" id="dots"></div>
+    <div class="cat-grid" id="cats"></div>
+    <div class="sec">
+      <div class="sec-h"><div class="sec-t">جدیدترین‌ها</div></div>
+      <div class="row" id="r1"></div>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><div class="sec-t">فیلم‌ها</div></div>
+      <div class="row" id="r2"></div>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><div class="sec-t">سریال‌ها</div></div>
+      <div class="row" id="r3"></div>
+    </div>
+  </div>
+  <div class="detail" id="det"></div>
+</div>
+
+<div class="btm">
+  <div class="btm-in">
+    <div class="nav"><div class="ic">👤</div>پروفایل</div>
+    <div class="nav"><div class="ic">⭐</div>علاقه‌مندی</div>
+    <div class="nav mid" onclick="goHome()">🏠</div>
+    <div class="nav" onclick="document.getElementById('q').focus()"><div class="ic">🔍</div>جستجو</div>
+    <div class="nav on"><div class="ic">🏠</div>خانه</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var API='https://movielix.arsh-d62.workers.dev';
+(function(){
+var $=function(id){return document.getElementById(id)};
+var all=[],hi=0,ht=null;
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)}
+function img(u){return u?API+'/api/img?u='+encodeURIComponent(u):''}
+function card(s){
+  var p=s.poster?'<img src="'+img(s.poster)+'" loading="lazy" onerror="this.parentElement.innerHTML=\'🎬\'">':'<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:44px">🎬</div>';
+  var tag=s.type==='series'?'سریال':'فیلم';
+  return '<div class="card" onclick="detail('+s.id+')"><div class="card-img">'+p+'<div class="card-tag">'+tag+'</div>'+(s.year?'<div class="card-year">'+s.year+'</div>':'')+'</div><div class="card-name">'+s.name+'</div></div>';
+}
+function render(id,d){$(id).innerHTML=d.length?d.map(card).join(''):''}
+
+var cats=[
+  {name:'انیمه و انیمیشن',q:'انیمه',c:'c1',e:'🎬'},
+  {name:'هالیوودی',q:'action',c:'c2',e:'💥'},
+  {name:'شرق آسیا',q:'کره',c:'c3',e:'🌏'},
+  {name:'خاورمیانه و هند',q:'هند',c:'c4',e:'🌍'},
+  {name:'ترکی',q:'ترک',c:'c5',e:'🎬'},
+  {name:'کره‌ای',q:'کره‌ای',c:'c6',e:'🌏'}
+];
+function renderCats(){
+  $('cats').innerHTML=cats.map(function(c,i){
+    return '<div class="cat-card '+c.c+'" onclick="filterCat(\''+c.q+'\')">'+c.e+' '+c.name+'</div>';
+  }).join('');
+}
+
+var heroes=[];
+function renderHero(){
+  if(!heroes.length)return;
+  var h=heroes[hi];
+  $('hero').innerHTML='<img src="'+img(h.poster)+'" onerror="this.parentElement.style.background=\'var(--card2)\'"><div class="hero-info"><div class="hero-title">'+h.name+'</div><div class="hero-sub">'+(h.description||'').substring(0,100)+'</div><button class="hero-btn" onclick="detail('+h.id+')">▶ مشاهده</button></div>';
+  $('dots').innerHTML=heroes.map(function(_,i){return '<div class="dot'+(i===hi?' on':'')+'" onclick="hi='+i+';renderHero()"></div>';}).join('');
+}
+
+function load(){
+  fetch(API+'/api/series').then(function(r){return r.json()}).then(function(d){
+    all=d.data||[];
+    heroes=all.slice(0,5);
+    renderHero();
+    renderCats();
+    var movies=all.filter(function(s){return s.type==='movie'||!s.type});
+    var series=all.filter(function(s){return s.type==='series'});
+    render('r1',all.slice(0,20));
+    render('r2',movies.slice(0,20));
+    render('r3',series.slice(0,20));
+  });
+}
+
+function startHero(){ht=setInterval(function(){if(heroes.length){hi=(hi+1)%heroes.length;renderHero();}},5000)}
+
+window.switchTab=function(t){
+  document.querySelectorAll('.tab').forEach(function(el){el.classList.remove('on')});
+  event.target.classList.add('on');
+  var movies=all.filter(function(s){return s.type==='movie'||!s.type});
+  var series=all.filter(function(s){return s.type==='series'});
+  if(t==='all'){render('r1',all.slice(0,20));render('r2',movies.slice(0,20));render('r3',series.slice(0,20));}
+  else if(t==='movie'){render('r1',movies.slice(0,20));render('r2',[]);render('r3',[]);}
+  else{render('r1',series.slice(0,20));render('r2',[]);render('r3',[]);}
+};
+
+window.filterCat=function(q){
+  $('q').value=q;
+  fetch(API+'/api/series/search?q='+encodeURIComponent(q)).then(function(r){return r.json()}).then(function(d){
+    render('r1',d.data||[]);render('r2',[]);render('r3',[]);
+  });
+};
+
+var st;
+$('q').addEventListener('input',function(){
+  clearTimeout(st);
+  var q=this.value.trim();
+  if(!q){load();return}
+  st=setTimeout(function(){
+    fetch(API+'/api/series/search?q='+encodeURIComponent(q)).then(function(r){return r.json()}).then(function(d){
+      render('r1',d.data||[]);render('r2',[]);render('r3',[]);
+    });
+  },300);
+});
+
+window.detail=function(id){
+  var s=all.find(function(x){return x.id===id});
+  if(!s)return;
+  $('home').style.display='none';
+  var d=$('det');d.style.display='block';
+  var h='<button class="back" onclick="goHome()">← بازگشت</button>';
+  h+='<div class="det-back">'+(s.poster?'<img src="'+img(s.poster)+'" onerror="this.parentElement.style.background=\'var(--card2)\'">':'')+'</div>';
+  h+='<div class="det-title">'+s.name+'</div>';
+  h+='<div class="det-meta">';
+  if(s.year)h+='<span>📅 '+s.year+'</span>';
+  if(s.genre)h+='<span>🎭 '+s.genre+'</span>';
+  if(s.type)h+='<span>'+(s.type==='series'?'📺 سریال':'🎬 فیلم')+'</span>';
+  h+='</div>';
+  if(s.description)h+='<div class="det-desc">'+s.description+'</div>';
+  if(s.source_url)h+='<a href="'+s.source_url+'" target="_blank" class="hero-btn" style="margin-bottom:16px">🔗 مشاهده در سایت اصلی</a>';
+  d.innerHTML=h;
+  $('main').scrollTop=0;
+};
+
+window.goHome=function(){$('home').style.display='block';$('det').style.display='none';$('main').scrollTop=0};
+
+load();startHero();
+})();
+</script>
+</body>
+</html>
